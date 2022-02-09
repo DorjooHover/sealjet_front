@@ -2,43 +2,37 @@ import { Button, Stack, Grid,Box,Paper,IconButton,InputBase } from "@mui/materia
 import { Search } from '@mui/icons-material' 
 import Link from 'next/link'
 
+
 export default function Navbar() {
 
      return (
           <Box className='nav'>
-               <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{px: 6}}>
-                    <Grid container spacing={2} >
-                         <Grid item xs={2}>
-                              <Link href='/'>
-                                   <a><img src="/img/sealjet-logo.png" alt="" /></a>
-                              </Link>
-                         </Grid>
-                         <Grid item xs={2}>
-                              <Link href='/'>
-                                   <a>Нүүр</a>
-                              </Link>
-                         </Grid>
-                         <Grid item xs={2}>
-                              <Link href='/product'>
-                                   <a>Бүртээгдэхүүн</a>
-                              </Link>
-                         </Grid>
-                         <Grid item xs={2}>
-                              <Link href='/news'>
-                                   <a>Мэдээ</a>
-                              </Link>
-                         </Grid>
-                         <Grid item xs={2}>
-                                   <a href="#contact">Холбоо</a>
-                         </Grid>
-                         <Grid item xs={2}>
-                              <Link href='/order'>
-                                   <a>Захиалах</a>
-                              </Link>
-                         </Grid>
-                    </Grid>
-                    <Paper component='form' sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}>
-                         <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+               <Stack direction="row" justifyContent="space-between" alignItems="center" className='py-4 px-32 flex'>
+                    <Stack sx={{flex: 4, display: 'flex'}} className='flex-row'>
+                         <Link href='/' >
+                              <a className="pr-7"><img src="/img/sealjet-logo.png" alt="" className='h-10'/></a>
+                         </Link>
+                         <Link href='/' >
+                              <a className="mx-7 font-medium flex items-center text-white">Нүүр</a>
+                         </Link>
+                         <Link href='/product' >
+                              <a className="mx-7 font-medium flex items-center text-white" >Бүтээгдэхүүн</a>
+                         </Link>
+                         <Link href='/info' >
+                              <a className="mx-7 font-medium flex items-center text-white" >Мэдээ</a>
+                         </Link>
+                              <a href="#contact" className="mx-7 font-medium flex items-center text-white" >Холбоо</a>
+                         <Link href='/order' >
+                              <a className="mx-7 font-medium flex items-center text-white" >Захиалах</a>
+                         </Link>
+
+                         
+                        
+                     </Stack>    
+                                   
+ 
+                    <Paper component='form' sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, flex: 1 }}>
+                         <IconButton type="submit"  aria-label="search" className='p-0 pl-2'>
                               <Search />
                          </IconButton>
                          <InputBase

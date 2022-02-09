@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+.header {
+    background-image: url('../../public/img/main/back1.png'); 
+
+}
+.nav {
+    background-color: #395C4D;
+}
+img {
+    width: 100%;
+}

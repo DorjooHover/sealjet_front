@@ -1,26 +1,27 @@
 import { executeQuery } from '../../config/db'
-const getAllInfos = async (req, res) => {
-     let id = req.query.id
+const getAllLogos = async (req, res) => {
+     
      try {
-          let infoData = await executeQuery(`
-          select * from infos 
+          let logoData = await executeQuery(`
+          select * from logos 
           `, [])
-          res.send(infoData)
+          res.send(logoData)
      }
      catch (err) {
           res.status(500).json(err)
      }
 }
-const getInfoById = async (req, res) => {
+
+const getLogoById = async (req, res ) => {
      let id = req.query.id
-     console.log(id)
      try {
-          let infoData = await executeQuery(`select * from infos where info_id=${id}`, [])
-          res.status(200).json(infoData)
+          let logoData = await executeQuery(`
+          select * from logos
+          where logo_id = ${id}
+          `, [])
+          res.status(200).send(logoData)
      } catch (error) {
           res.status(500).json(error)
      }
 }
-
-
-export { getAllInfos, getInfoById }
+export { getAllLogos, getLogoById }

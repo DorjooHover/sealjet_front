@@ -1,21 +1,26 @@
 import { executeQuery } from '../../config/db'
-const getAllProductDetails = async (req, res) => {
+const getAllInfos = async (req, res) => {
      let id = req.query.id
      try {
-          let productData = await executeQuery(`
-          select * from product_details pd
-          inner join products p on p.product_id = pd.product_id 
-          inner join material_details md on md.product_detail_id = pd.product_detail_id
-          where p.product_id = ${id}
-          group by p.product_id 
+          let infoData = await executeQuery(`
+          select * from infos 
           `, [])
-          res.send(productData)
+          res.send(infoData)
      }
      catch (err) {
           res.status(500).json(err)
      }
 }
+const getInfoById = async (req, res) => {
+     let id = req.query.id
+     console.log(id)
+     try {
+          let infoData = await executeQuery(`select * from infos where info_id=${id}`, [])
+          res.status(200).json(infoData)
+     } catch (error) {
+          res.status(500).json(error)
+     }
+}
 
 
-
-export { getAllProductDetails }
+export { getAllInfos, getInfoById }
