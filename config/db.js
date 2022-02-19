@@ -19,7 +19,7 @@ const executeQuery = (query, arraParams) => {
           try {
                pool.query(query, arraParams, (err, data) => {
                     if (err) {
-                         console.log('error in execute query')
+                         console.log('error in execute query ', err)
                          reject(err)
                     }
                     resolve(data)

@@ -1,28 +1,33 @@
-import { executeQuery } from '../../config/db'
+import { executeQuery } from "../../config/db";
+
 const getAllProducts = async (req, res) => {
-     let id = req.query.id
-     try {
-          let productData = await executeQuery(`
-          select * from products p 
-          inner join categories c on c.category_id = p.category_id 
-          where c.category_id = ${id} 
-          group by c.category_id`, [])
-          res.send(productData)
-     }
-     catch (err) {
-          res.status(500).json(err)
-     }
-}
+  let c_id = req.query.id;
+  let id = req.query.per;
+  try {
+    let productData = await executeQuery(
+      ` 
+        select * from products
+        where category_id = ${c_id} and product_id >= ${id} and product_id <= ${id} + 5
+      `,
+      []
+    );
+    res.send(productData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
-const getProductById = async (req, res) => {
-     let id = req.query.id
-     console.log(id)
-     try {
-          let productData = await executeQuery(`select * from products where product_id=${id}`, [])
-          res.status(200).json(productData)
-     } catch (error) {
-          res.status(500).json(error)
-     }
-}
+const getProductId = async (req, res) => {
+  let id = req.query.id;
+  try {
+    let productData = await executeQuery(
+      `select count(product_id) as counts from products where category_id=${id} `,
+      []
+    );
+    res.status(200).json(productData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 
-export { getAllProducts, getProductById }
+export { getAllProducts, getProductId };

@@ -1,7 +1,8 @@
-import nc from 'next-connect'
-import { getInfoById } from '../../../controller/info/info'
+import nc from "next-connect";
+import { getInfoById, deleteInfoById } from "../../../controller/info/info";
 
-const handler = nc()
+const handler = nc();
 
-handler.get(getInfoById)
-export default handler
+handler.get(getInfoById);
+handler.delete(deleteInfoById);
+export default handler;
