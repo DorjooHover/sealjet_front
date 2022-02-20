@@ -1,11 +1,11 @@
 import nc from "next-connect";
-
+import {getAllMaterials} from '../../../controller/material/material'
 import { executeQuery } from "../../../config/db";
 import multer from "multer";
 import path from "path";
 
 const handler = nc();
-
+handler.get(getAllMaterials)
 export const config = {
   api: {
     bodyParser: false,
