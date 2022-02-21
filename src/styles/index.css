@@ -5,12 +5,14 @@
 
 * {
     font-family: 'Rubik', sans-serif;
+    scroll-behavior: smooth;
 }
 .header {
     background-image: url('../../public/img/main/back1.png'); 
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .nav, .contact {
     background: linear-gradient(149.33deg, #395C4D 0.87%, #132D1F 94.27%)
 }
@@ -26,8 +28,9 @@ img {
 .dashboard {
     flex: 6;
     background: #e5e5e5;
-    padding: 0 40px;
-    padding-top: 80px;
+    padding: 60px 40px;
+    overflow-y: scroll;
+    height: 100vh;
 }
 .social {
     background: rgba(0, 0, 0, 0.9);
@@ -45,10 +48,10 @@ img {
 }
 .section_title {
     color: #253D32;
-    flex: 4;
+    flex: 3;
 }
 .section_info {
-    flex: 4;
+    flex: 3;
 }
 .section_text {
     color: #78847D;
@@ -71,7 +74,7 @@ img {
     height: 100%;
 }
 .contact_img, .contact_map {
-    width: 45%;
+    width: 40%;
 }
 
 .contact_ceil {

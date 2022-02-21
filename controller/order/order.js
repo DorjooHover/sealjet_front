@@ -2,27 +2,20 @@ import { executeQuery } from "../../config/db";
 
 const getAllOrders = async (req, res) => {
   try {
-    let orderData = await executeQuery("select * from orders", []);
+    let orderData = await executeQuery(`
+    select * from orders o
+    inner join materials m on o.material_id = m.material_id
+    inner join products p on o.product_id = p.product_id
+    `, []);
     res.send(orderData);
   } catch (err) {
     res.status(500).json(err);
   }
 };
-const createOrder = async (req, res) => {
-  console.log(req.query);
-  let { name, phone, email, product_names } = req.query;
-  try {
-    let orderData = await executeQuery(
-      `insert into orders(name , phone, email , product_names ) values(?, ?, ?, ?)`,
-      [name, phone, email, product_names]
-    );
-    res.status(201).json(orderData);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-};
+
 const deleteOrderById = async (req, res) => {
   let id = req.query.id;
+  console.log(id)
   try {
     let orderData = await executeQuery(
       `
@@ -38,4 +31,4 @@ const deleteOrderById = async (req, res) => {
     res.status(500).json(error);
   }
 };
-export { createOrder, getAllOrders, deleteOrderById };
+export { getAllOrders, deleteOrderById };

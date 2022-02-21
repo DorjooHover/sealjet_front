@@ -12,7 +12,7 @@ export default function Contact() {
       </div>
       <div className="flex justify-between px-28 pb-28">
         <div className="contact_img">
-          <img src="./img/sealjet.png" />
+          <img src="/img/sealjet.png" />
         </div>
         {/* <Maps /> */}
       </div>

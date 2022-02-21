@@ -7,6 +7,17 @@ export default function Product() {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [productId, setProductId] = useState("");
+  const [productDetail, setProductDetail] = useState({
+    temperature: "",
+    speed: "",
+    pressure: "",
+    undsen_salinik: "",
+    gogtsoo_rezin: "",
+    tulah_tsagirag: "",
+    erchimjuulegch: "",
+    zahiin_tulah: "",
+  });
   const loadCategory = async () => {
     let res = await axios.get(`http://localhost:3000/api/category`, []);
     setCategories(res.data);
@@ -19,7 +30,7 @@ export default function Product() {
     const categoryId = e.target[1].selectedOptions[0].id;
     const formData = new FormData();
     formData.append("file", file);
-    let res = await axios.post(`http://localhost:3000/api/material`, formData, {
+    let res = await axios.post(`http://localhost:3000/api/product`, formData, {
       params: {
         title,
         description,
@@ -29,10 +40,37 @@ export default function Product() {
         "Content-Type": "multipart/form-data",
       },
     });
-
-    setFile(null);
-    setTitle("");
-    setDescription("");
+    setProductId(res.data.result.insertId);
+  };
+  console.log(productId);
+  const handleProductDetail = async (e) => {
+    e.preventDefault();
+    let res = await axios.post(`http://localhost:3000/api/product_detail`, {
+      params: {
+        productId: productId,
+        temperature: productDetail.temperature,
+        speed: productDetail.speed,
+        pressure: productDetail.pressure,
+        undsen_salinik: productDetail.undsen_salinik,
+        tulah_tsagirag: productDetail.tulah_tsagirag,
+        gogtsoo_rezin: productDetail.gogtsoo_rezin,
+        erchimjuulegch: productDetail.erchimjuulegch,
+        zahiin_tulah: productDetail.zahiin_tulah,
+      },
+    });
+    setProductDetail((productDetail) => ({
+      ...productDetail,
+      ...{
+        temperature: "",
+        speed: "",
+        pressure: "",
+        undsen_salinik: "",
+        gogtsoo_rezin: "",
+        erchimjuulegch: "",
+        tulah_tsagirag: "",
+        zahiin_tulah: "",
+      },
+    }));
   };
   return (
     <div className="absolute top-0 h-screen w-screen">
@@ -68,7 +106,10 @@ export default function Product() {
                   >
                     {categories.map((category) => {
                       return (
-                        <option id={category.category_id} key={category.catergoy_id}>
+                        <option
+                          id={category.category_id}
+                          key={category.catergoy_id}
+                        >
                           {category.type}
                         </option>
                       );
@@ -107,7 +148,11 @@ export default function Product() {
               <h2 className="font-bold text-xl mb-3">
                 Бүтээгдэхүүн дэлгэрэнгүй
               </h2>
-              <form action="" className="justify-between w-full">
+              <form
+                action=""
+                className="justify-between w-full"
+                onSubmit={handleProductDetail}
+              >
                 <div className="flex flex-col">
                   <label htmlFor="" className="mb-3">
                     Температур
@@ -115,6 +160,13 @@ export default function Product() {
                   <input
                     type="text"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
+                    value={productDetail.temperature}
+                    onChange={(e) =>
+                      setProductDetail((productDetail) => ({
+                        ...productDetail,
+                        ...{ temperature: e.target.value },
+                      }))
+                    }
                   />
                 </div>
                 <div className="flex flex-col">
@@ -124,6 +176,13 @@ export default function Product() {
                   <input
                     type="text"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
+                    value={productDetail.speed}
+                    onChange={(e) =>
+                      setProductDetail((productDetail) => ({
+                        ...productDetail,
+                        ...{ speed: e.target.value },
+                      }))
+                    }
                   />
                 </div>
                 <div className="flex flex-col">
@@ -133,6 +192,13 @@ export default function Product() {
                   <input
                     type="text"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
+                    value={productDetail.pressure}
+                    onChange={(e) =>
+                      setProductDetail((productDetail) => ({
+                        ...productDetail,
+                        ...{ pressure: e.target.value },
+                      }))
+                    }
                   />
                 </div>
                 <div className="flex flex-col">
@@ -142,6 +208,13 @@ export default function Product() {
                   <input
                     type="text"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
+                    value={productDetail.undsen_salinik}
+                    onChange={(e) =>
+                      setProductDetail((productDetail) => ({
+                        ...productDetail,
+                        ...{ undsen_salinik: e.target.value },
+                      }))
+                    }
                   />
                 </div>
                 <div className="flex flex-col">
@@ -151,6 +224,13 @@ export default function Product() {
                   <input
                     type="text"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
+                    value={productDetail.gogtsoo_rezin}
+                    onChange={(e) =>
+                      setProductDetail((productDetail) => ({
+                        ...productDetail,
+                        ...{ gogtsoo_rezin: e.target.value },
+                      }))
+                    }
                   />
                 </div>
                 <div className="flex flex-col">
@@ -160,6 +240,13 @@ export default function Product() {
                   <input
                     type="text"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
+                    value={productDetail.tulah_tsagirag}
+                    onChange={(e) =>
+                      setProductDetail((productDetail) => ({
+                        ...productDetail,
+                        ...{ tulah_tsagirag: e.target.value },
+                      }))
+                    }
                   />
                 </div>
                 <div className="flex flex-col">
@@ -169,6 +256,13 @@ export default function Product() {
                   <input
                     type="text"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
+                    value={productDetail.erchimjuulegch}
+                    onChange={(e) =>
+                      setProductDetail((productDetail) => ({
+                        ...productDetail,
+                        ...{ erchimjuulegch: e.target.value },
+                      }))
+                    }
                   />
                 </div>
 
@@ -179,6 +273,13 @@ export default function Product() {
                   <input
                     type="text"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
+                    value={productDetail.zahiin_tulah}
+                    onChange={(e) =>
+                      setProductDetail((productDetail) => ({
+                        ...productDetail,
+                        ...{ zahiin_tulah: e.target.value },
+                      }))
+                    }
                   />
                 </div>
 

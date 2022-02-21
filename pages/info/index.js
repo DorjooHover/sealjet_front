@@ -11,7 +11,21 @@ import {
   Typography,
 } from "@mui/material";
 import Header from "../../src/components/Info/Header";
-
+import Contact from "../../src/components/Contact/Contact";
+import Footer from "../../src/components/Contact/Footer";
+function MainContact(props) {
+  const isMain = props.ismain;
+  if (isMain != 5) {
+    return <></>;
+  } else {
+    return (
+      <>
+      <Footer />
+      <Contact />
+    </>
+    )
+  }
+}
 function Title(props) {
   const isReturn = props.isreturn;
   const isMain = props.ismain;
@@ -66,40 +80,43 @@ export default function Infos({ data }) {
   }, [infos]);
 
   return (
-    <Container componet={Box} className="mt-6 ">
-      <div className="grid section_grid gap-3">
-        {infos.map((info) => {
-          return (
-            <Title
-              isreturn={page}
-              ismain={pages}
-              perPage={infos[0].info_id}
-              data={info}
-              key={info.info_id}
-            />
-          );
-        })}
-      </div>
-      <Container component={Box} py={3} className="mt-8 px-0">
-        <Grid
-          container
-          spacing={2}
-          justifyContent="center"
-          className="grid grid-cols-3"
-        >
+    <>
+      <Container componet={Box} className="mt-6 ">
+        <div className="grid section_grid gap-3">
           {infos.map((info) => {
-            return <Main ismain={pages} info={info} key={info.info_id}/>;
+            return (
+              <Title
+                isreturn={page}
+                ismain={pages}
+                perPage={infos[0].info_id}
+                data={info}
+                key={info.info_id}
+              />
+            );
           })}
-        </Grid>
-        <Box py={3} display="flex" justifyContent="center">
-          <Pagination
-            count={perPage}
-            color="secondary"
-            variant="outline"
-            onChange={(event, value) => setPage(value)}
-          />
-        </Box>
+        </div>
+        <Container component={Box} py={3} className="mt-8 px-0">
+          <Grid
+            container
+            spacing={2}
+            justifyContent="center"
+            className="grid grid-cols-3"
+          >
+            {infos.map((info) => {
+              return <Main ismain={pages} info={info} key={info.info_id} />;
+            })}
+          </Grid>
+          <Box py={3} display="flex" justifyContent="center">
+            <Pagination
+              count={perPage}
+              color="secondary"
+              variant="outline"
+              onChange={(event, value) => setPage(value)}
+            />
+          </Box>
+        </Container>
       </Container>
-    </Container>
+      <MainContact ismain={pages} />
+    </>
   );
 }

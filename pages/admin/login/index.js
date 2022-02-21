@@ -29,7 +29,7 @@ export default function Admin() {
       : setMessage("Нэвтрэх нэр эсвэл нууц үг буруу байна.");
   };
   return (
-    <div className="absolute top-0">
+    <div className="absolute top-0 z-40">
       <Head>
         <title>Нэвтрэх</title>
         <link rel="shortcut icon" href="/img/sealjet-logo.png"></link>

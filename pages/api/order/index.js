@@ -28,15 +28,15 @@ handler.use(uploadFile);
 handler.post(async (req, res) => {
   let url = "http://" + req.headers.host;
   let filename = req.file.originalname + "_" + date;
-  let name = req.body.name;
-  let comment = req.body.comment;
-  let dotorD = req.body.dotor_d;
-  let gadnaD = req.body.gadna_d;
-  let height = req.body.height;
-  let email = req.body.email;
-  let phone = req.body.phone;
-  let materialId = req.body.material_id;
-  let productId = req.body.product_id;
+  let name = req.query.name;
+  let comment = req.query.comment;
+  let dotorD = req.query.dotorD;
+  let gadnaD = req.query.gadnaD;
+  let height = req.query.height;
+  let email = req.query.email;
+  let phone = req.query.phone;
+  let materialId = req.query.material_id;
+  let productId = req.query.product_id;
   let result = await executeQuery(
     `
     insert into orders(img, name, comment, dotor_diametr, gadna_diametr, height, phone, email, material_id, product_id) 

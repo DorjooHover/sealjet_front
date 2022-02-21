@@ -5,7 +5,7 @@ function Order(props) {
   const product = props.product;
   if (id !== undefined) {
     return (
-      <div className="pt-12 width m-auto px-20">
+      <div className="pt-12 width m-auto px-20" key={product[0].product_id}>
         <div className="flex mb-10">
           <div className="rounded-lg overflow-hidden bg-white border-zinc-300 border-solid border ">
             <img src="/img/product/product_1.png" />
@@ -58,7 +58,7 @@ function Order(props) {
     );
   } else {
     return (
-      <div className="pt-12 width m-auto px-20">
+      <div className="pt-12 width m-auto px-20" key={product[0].product_id}>
         <div className="flex mb-10">
           <div className="rounded-lg overflow-hidden bg-white border-zinc-300 border-solid border ">
             <img src="/img/product/product_1.png" />

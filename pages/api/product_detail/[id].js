@@ -3,6 +3,6 @@ import { getProductDetailById, createProductDetail } from "../../../controller/p
 
 const handler = nc();
 handler.get(getProductDetailById);
-handler.post(createProductDetail);
+
 
 export default handler;

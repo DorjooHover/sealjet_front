@@ -1,15 +1,18 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import axios from "axios";
 export default function Orders() {
   const router = useRouter();
   const [file, setFile] = useState(null);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [comment, setComment] = useState("");
-  const [height, setHeight] = useState("");
-  const [gadnaD, setGadnaD] = useState("");
-  const [dotorD, setDotorD] = useState("");
+  const [height, setHeight] = useState(0);
+  const [gadnaD, setGadnaD] = useState(0);
+  const [dotorD, setDotorD] = useState(0);
   const [email, setEmail] = useState("");
+  const material_id = router.query.material_id;
+  const product_id = router.query.product_id;
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -23,6 +26,8 @@ export default function Orders() {
         gadnaD,
         dotorD,
         email,
+        material_id,
+        product_id,
       },
       headers: {
         "Content-Type": "multipart/form-data",
@@ -30,11 +35,17 @@ export default function Orders() {
     });
 
     setFile(null);
-    setTitle("");
-    setDescription("");
+    setName("");
+    setComment("");
+    setHeight(0);
+    setGadnaD(0);
+    setDotorD(0);
+    setEmail("");
+    setPhone("");
   };
   return (
     <div>
+      <h2 className="title text-2xl font-bold mx-auto  py-5">Захиалах </h2>
       <form onSubmit={handleSubmit} className="title mx-auto py-10">
         <div className="flex justify-between">
           <div className="flex flex-col">
@@ -58,7 +69,7 @@ export default function Orders() {
               name="phone"
               className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
               value={phone}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
             />
           </div>
         </div>
@@ -84,6 +95,7 @@ export default function Orders() {
               type="file"
               name="file"
               id="file"
+              // value={file}
               onChange={(e) => setFile(e.target.files[0])}
             />
           </div>
@@ -147,7 +159,7 @@ export default function Orders() {
           <input
             type="submit"
             value="Илгээх"
-            className="h-12 py-2 rounded-full bg text-white font-bold w-48"
+            className="h-12 py-2 rounded-full bg text-white font-bold w-48 cursor-pointer"
           />
         </div>
       </form>

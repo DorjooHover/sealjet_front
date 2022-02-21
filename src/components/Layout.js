@@ -6,8 +6,8 @@ export default function Layout({ children }) {
     <>
       <Navbar />
       {children}
-      <Contact />
-      <Footer />
+      {/* <Contact />
+      <Footer /> */}
     </>
   );
 }

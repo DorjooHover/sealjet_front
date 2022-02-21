@@ -16,22 +16,23 @@ const getProductDetailById = async (req, res) => {
   }
 };
 const createProductDetail = async (req, res) => {
-  let id = req.query.id;
-  let temperature = req.body.temperature;
-  let speed = req.body.speed;
-  let pressure = req.body.pressure;
-  let undsen_salinik = req.body.undsen_salinik;
-  let tulah_tsagirag = req.body.tulah_tsagirag;
-  let gogtsoo_rezin = req.body.gogtsoo_rezin;
-  let erchimjuulegch = req.body.erchimjuulegch;
-  let zahiin_tulah = req.body.zahiin_tulah;
+  let productId = req.body.params.productId
+  let temperature = req.body.params.temperature;
+  let speed = req.body.params.speed;
+  let pressure = req.body.params.pressure;
+  let undsen_salinik = req.body.params.undsen_salinik;
+  let tulah_tsagirag = req.body.params.tulah_tsagirag;
+  let gogtsoo_rezin = req.body.params.gogtsoo_rezin;
+  let erchimjuulegch = req.body.params.erchimjuulegch;
+  let zahiin_tulah = req.body.params.zahiin_tulah;
   try {
     let productDetailData = await executeQuery(
       `
          insert into product_details(product_id, temperature, speed, pressure, undsen_salinik, tulah_tsagirag, gogtsoo_rezin, erchimjuulegch, zahiin_tulah)
-           values(${id}, ?, ?, ?, ?, ?, ? , ?, ?)
+           values(?, ?, ?, ?, ?, ?, ? , ?, ?)
          `,
       [
+        productId,
         temperature,
         speed,
         pressure,

@@ -11,12 +11,13 @@ export const config = {
     bodyParser: false,
   },
 };
+let date = Date.now()
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public");
+    cb(null, "public/img/product");
   },
   filename: function (req, file, cb) {
-    cb(null, file.filename + "_" + Date.now + path.extname(file.originalname));
+    cb(null, file.originalname + date);
   },
 });
 
@@ -28,7 +29,7 @@ let uploadFile = upload.single("file");
 handler.use(uploadFile);
 handler.post(async (req, res) => {
   let url = "http://" + req.headers.host;
-  let filename = req.file.originalname;
+  let filename = req.file.originalname + date;
   let title = req.query.title;
   let description = req.query.description;
   let categoryId = req.query.catergoryId;
@@ -38,7 +39,7 @@ handler.post(async (req, res) => {
   );
   res.status(200).send({
     result: result,
-    url: url + "/public/img/" + req.file.originalname,
+    url: url + "/public/img/product" + req.file.originalname,
   });
 });
 

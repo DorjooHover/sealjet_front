@@ -46,12 +46,12 @@ export default function Navbar() {
               Мэдээ
             </a>
           </Link>
-          <a
-            href="#contact"
-            className="mx-7 font-medium flex items-center text-white"
-          >
-            Холбоо
-          </a>
+          <Link href="/#contacts">
+            <a className="mx-7 font-medium flex items-center text-white">
+              Холбоо
+            </a>
+          </Link>
+
           <Link href="/order">
             <a className="mx-7 font-medium flex items-center text-white">
               Захиалах
