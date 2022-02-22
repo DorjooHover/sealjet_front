@@ -81,7 +81,7 @@ export default function Infos({ data }) {
 
   return (
     <>
-      <Container componet={Box} className="mt-6 ">
+      <Container component={Box} className="mt-6 ">
         <div className="grid section_grid gap-3">
           {infos.map((info) => {
             return (

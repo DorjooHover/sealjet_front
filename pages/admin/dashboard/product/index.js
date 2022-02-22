@@ -24,7 +24,7 @@ export default function Product() {
   };
   useEffect(() => {
     loadCategory();
-  });
+  }, [categories]);
   const handleProduct = async (e) => {
     e.preventDefault();
     const categoryId = e.target[1].selectedOptions[0].id;

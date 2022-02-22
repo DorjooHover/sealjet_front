@@ -13,12 +13,12 @@ export default function Header({ data }) {
         <div className="mt-24">
           <h2
             className="text-white font-black text-3xl"
-            key={data[0].header_id}
+            key={data.header_id}
           >
-            {data[0].title}
+            {data.title}
           </h2>
           <p className="text-white opacity-60 align-justify mt-4">
-            {data[0].description}
+            {data.description}
           </p>
         </div>
       </div>

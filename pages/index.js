@@ -3,8 +3,8 @@ import Header from "../src/components/Header";
 import Info from "../src/components/Info";
 import Product from "./product";
 import Infos from "./info";
-import Contact from '../src/components/Contact/Contact'
-import Footer from '../src/components/Contact/Footer'
+import Contact from "../src/components/Contact/Contact";
+import Footer from "../src/components/Contact/Footer";
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:3000/api/header");
 
@@ -32,18 +32,18 @@ export default function Home({ data }) {
       </Head>
 
       <>
-        <Header data={data} />
-        <Product ismain={true} />
+        <Header data={data[0]} />
+        {/* <Product ismain={true} /> */}
         <div className="bg-zinc-100 pt-12">
           <h2 className="title text-2xl font-bold mx-auto px-4">
             Мэдээ, мэдээлэл
           </h2>
-          <Infos data={3} ismain={true}/>
+          {/* <Infos data={3} /> */}
         </div>
       </>
       <div id="contacts">
-      <Contact />
-      <Footer />
+        {/* <Contact /> */}
+        {/* <Footer /> */}
       </div>
     </div>
   );

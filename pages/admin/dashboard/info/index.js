@@ -25,7 +25,7 @@ export default function Info() {
   };
   useEffect(() => {
     loadInfos();
-  }, [infos]);
+  }, [infos, perPage]);
   const handleDelete = async (e) => {
     e.preventDefault();
     let id = e.target.id;
@@ -52,7 +52,7 @@ export default function Info() {
   };
 
   return (
-    <div className='absolute top-0 h-screen w-screen'>
+    <div className="absolute top-0 h-screen w-screen">
       <Head>
         <title>Мэдээ</title>
         <link rel="shortcut icon" href="/img/sealjet-logo.png"></link>
@@ -72,7 +72,7 @@ export default function Info() {
                     <input
                       type="text"
                       name="title"
-                      id='title'
+                      id="title"
                       className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
@@ -83,7 +83,7 @@ export default function Info() {
                       Мэдээний дэлгэрэнгүй
                     </label>
                     <textarea
-                      id='description'
+                      id="description"
                       type="text"
                       name="description"
                       className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"

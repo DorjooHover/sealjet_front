@@ -11,7 +11,7 @@ export default function Order() {
   };
   useEffect(() => {
     loadOrder();
-  });
+  }, [orders]);
   const deleteOrder = async (e) => {
     e.preventDefault();
     let id = e.target.id;
