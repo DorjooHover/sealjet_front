@@ -1,10 +1,10 @@
 const { createPool } = require('mysql2')
 const pool = createPool({
-     host: 'localhost',
-     user: 'root',
-     password: 'dorjooX0',
-     port: 3306,
-     database: 'sealjet',
+     host: process.env.MYSQL_HOST,
+     user: process.env.MYSQL_USERNAME,
+     password: process.env.MYSQL_PASSWORD,
+     port: parseInt(process.env.MYSQL_PORT),
+     database: process.env.MYSQL_DATABASE,
 })
 
 pool.getConnection((err) => {
