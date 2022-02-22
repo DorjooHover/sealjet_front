@@ -50,48 +50,52 @@ export default function Setting() {
               onSubmit={changePassword}
             >
               <div className="flex flex-col">
-                <label htmlFor="" className="mb-3">
+                <label htmlFor="name" className="mb-3">
                   Хэрэглэгчийн нэр солих
                 </label>
                 <input
                   type="text"
                   name="name"
+                  id="name"
                   className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="flex flex-col">
-                <label htmlFor="" className="mb-3">
+                <label htmlFor="new_password" className="mb-3">
                   Шинэ нууц үг оруулуах
                 </label>
                 <input
                   type="password"
                   name="new_password"
+                  id="new_password"
                   className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                 />
               </div>
               <div className="flex flex-col">
-                <label htmlFor="" className="mb-3">
+                <label htmlFor="old_password" className="mb-3">
                   Өмнөх нууц үг оруулуах
                 </label>
                 <input
                   type="password"
                   name="old_password"
+                  id="old_password"
                   className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                   value={oldPassword}
                   onChange={(e) => setOldPassword(e.target.value)}
                 />
               </div>
               <div className="flex flex-col">
-                <label htmlFor="" className="mb-3">
+                <label htmlFor="new_password_auth" className="mb-3">
                   Шинэ нууц үг дахин оруулуах
                 </label>
                 <input
                   type="password"
                   name="new_password_auth"
+                  id="new_password_auth"
                   className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                   value={authPassword}
                   onChange={(e) => {

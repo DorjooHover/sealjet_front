@@ -66,22 +66,24 @@ export default function Info() {
               <div className="flex mt-4">
                 <form onSubmit={handleSubmit}>
                   <div className="flex flex-col">
-                    <label htmlFor="" className="mb-3">
+                    <label htmlFor="title" className="mb-3">
                       Мэдээний гарчиг
                     </label>
                     <input
                       type="text"
                       name="title"
+                      id='title'
                       className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label htmlFor="" className="mb-3">
+                    <label htmlFor="description" className="mb-3">
                       Мэдээний дэлгэрэнгүй
                     </label>
                     <textarea
+                      id='description'
                       type="text"
                       name="description"
                       className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
@@ -91,13 +93,13 @@ export default function Info() {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label htmlFor="" className="mb-3">
+                    <label htmlFor="file" className="mb-3">
                       Зураг оруулах
                     </label>
                     <input
                       type="file"
-                      name="image"
-                      id="image"
+                      name="file"
+                      id="file"
                       onChange={(e) => setFile(e.target.files[0])}
                     />
                   </div>

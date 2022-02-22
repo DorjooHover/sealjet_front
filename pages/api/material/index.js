@@ -1,11 +1,11 @@
 import nc from "next-connect";
-import {getAllMaterials} from '../../../controller/material/material'
+import { getAllMaterials } from "../../../controller/material/material";
 import { executeQuery } from "../../../config/db";
 import multer from "multer";
 import path from "path";
 
 const handler = nc();
-handler.get(getAllMaterials)
+handler.get(getAllMaterials);
 export const config = {
   api: {
     bodyParser: false,
@@ -13,10 +13,10 @@ export const config = {
 };
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public");
+    cb(null, "public/img/material");
   },
   filename: function (req, file, cb) {
-    cb(null, file.filename + "_" + Date.now + path.extname(file.originalname));
+    cb(null, date + "_" + path.extname(file.originalname));
   },
 });
 
@@ -29,7 +29,7 @@ handler.use(uploadFile);
 handler.post(async (req, res) => {
   console.log(req);
   let url = "http://" + req.headers.host;
-  let filename = req.file.originalname;
+  let filename = date + "_" + path.extname(file.originalname);
   let name = req.body.name;
   let description = req.body.description;
   console.log(filename, name, description);
@@ -39,7 +39,12 @@ handler.post(async (req, res) => {
   );
   res.status(200).send({
     result: result,
-    url: url + "/public/img/"+  req.file.originalname,
+    url:
+      url +
+      "/public/img/material" +
+      date +
+      "_" +
+      path.extname(file.originalname),
   });
 });
 

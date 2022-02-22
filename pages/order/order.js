@@ -49,24 +49,26 @@ export default function Orders() {
       <form onSubmit={handleSubmit} className="title mx-auto py-10">
         <div className="flex justify-between">
           <div className="flex flex-col">
-            <label htmlFor="" className="mb-3">
+            <label htmlFor="name" className="mb-3">
               Овог, нэр
             </label>
             <input
               type="text"
               name="name"
+              id="name"
               className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="" className="mb-3">
+            <label htmlFor="phone" className="mb-3">
               Утасны дугаар
             </label>
             <input
               type="tel"
               name="phone"
+              id="phone"
               className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -76,19 +78,20 @@ export default function Orders() {
 
         <div className="flex justify-between">
           <div className="flex flex-col">
-            <label htmlFor="" className="mb-3">
+            <label htmlFor="email" className="mb-3">
               Цахим хаяг
             </label>
             <input
               type="email"
               name="email"
+              id="email"
               className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex flex-col w-96">
-            <label htmlFor="" className="mb-3">
+            <label htmlFor="file" className="mb-3">
               Зураг оруулах
             </label>
             <input
@@ -102,12 +105,13 @@ export default function Orders() {
         </div>
         <div className="flex items-center justify-between">
           <div>
-            <label htmlFor="" className="mr-4">
+            <label htmlFor="gadna_d" className="mr-4">
               Гадна диаметр
             </label>
             <input
               type="number"
               name="gadna_d"
+              id="gadna_d"
               className="w-20 rounded-md border-gray-300 border-solid border py-2 px-3 mr-1"
               value={gadnaD}
               onChange={(e) => setGadnaD(e.target.value)}
@@ -115,12 +119,13 @@ export default function Orders() {
             см
           </div>
           <div>
-            <label htmlFor="" className="mr-4">
+            <label htmlFor="dotor_d" className="mr-4">
               Дотор диаметр
             </label>
             <input
               type="number"
               name="dotor_d"
+              id="dotor_d"
               className="w-20 rounded-md border-gray-300 border-solid border py-2 px-3 mr-1"
               value={dotorD}
               onChange={(e) => setDotorD(e.target.value)}
@@ -128,12 +133,13 @@ export default function Orders() {
             см
           </div>
           <div>
-            <label htmlFor="" className="mr-4">
+            <label htmlFor="height" className="mr-4">
               Өндөр
             </label>
             <input
               type="number"
               name="height"
+              id="height"
               className="w-20 mr-1 rounded-md border-gray-300 border-solid border py-2 px-3"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
@@ -143,12 +149,13 @@ export default function Orders() {
         </div>
         <div className="flex justify-between items-end mt-3">
           <div className="flex flex-col">
-            <label htmlFor="" className="mb-3">
+            <label htmlFor="comment" className="mb-3">
               Хүсэлт
             </label>
             <textarea
               type="text"
               name="comment"
+              id="comment"
               className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
               height="300"
               value={comment}

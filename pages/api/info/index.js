@@ -1,11 +1,11 @@
-import nc from 'next-connect'
-import {getAllInfos } from '../../../controller/info/info'
+import nc from "next-connect";
+import { getAllInfos } from "../../../controller/info/info";
 import multer from "multer";
 import path from "path";
 
-const handler = nc()
+const handler = nc();
 
-handler.get(getAllInfos)
+handler.get(getAllInfos);
 export const config = {
   api: {
     bodyParser: false,
@@ -13,10 +13,10 @@ export const config = {
 };
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public");
+    cb(null, "public/img/info");
   },
   filename: function (req, file, cb) {
-    cb(null, file.filename + "_" + Date.now + path.extname(file.originalname));
+    cb(null, date + "_" + path.extname(file.originalname));
   },
 });
 
@@ -28,7 +28,7 @@ let uploadFile = upload.single("file");
 handler.use(uploadFile);
 handler.post(async (req, res) => {
   let url = "http://" + req.headers.host;
-  let filename = req.file.originalname;
+  let filename = date + "_" + path.extname(file.originalname);
   let title = req.query.title;
   let description = req.query.description;
   let result = await executeQuery(
@@ -37,8 +37,9 @@ handler.post(async (req, res) => {
   );
   res.status(200).send({
     result: result,
-    url: url + "/public/img/" + req.file.originalname,
+    url:
+      url + "/public/img/info" + date + "_" + path.extname(file.originalname),
   });
 });
 
-export default handler
+export default handler;

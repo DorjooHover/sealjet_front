@@ -19,7 +19,7 @@ export default function SideBar() {
       </div>
       <ul className="pt-6 border-gray-400 border-solid border-t">
         <li className="mb-4">
-          <Link href="/dashboard/order">
+          <Link href="/admin/dashboard/order">
             <a className={`text-gray-400`}>
               <CheckCircleOutline className="mr-2" />
               Захиалга

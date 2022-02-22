@@ -27,7 +27,7 @@ export default function Material() {
   };
 
   return (
-    <div className='absolute top-0 h-screen w-screen'>
+    <div className="absolute top-0 h-screen w-screen">
       <Head>
         <title>Материал</title>
         <link rel="shortcut icon" href="/img/sealjet-logo.png"></link>
@@ -38,31 +38,33 @@ export default function Material() {
           <h2 className="font-bold text-xl mb-5">Материал</h2>
           <form onSubmit={handleSubmit} encType="multipart/form-data">
             <div className="flex flex-col">
-              <label htmlFor="" className="mb-3">
+              <label htmlFor="name" className="mb-3">
                 Материалын нэр
               </label>
               <input
                 type="text"
                 name="name"
+                id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="" className="mb-3">
+              <label htmlFor="description" className="mb-3">
                 Материалын дэлгэрэнгүй
               </label>
               <textarea
                 type="text"
                 name="description"
+                id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="" className="mb-3">
+              <label htmlFor="image" className="mb-3">
                 Зураг оруулах
               </label>
               <input

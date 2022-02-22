@@ -47,6 +47,7 @@ export default function Admin() {
             <input
               type="text"
               name="username"
+              id="username"
               className="w-96 p-2 rounded-md"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -60,6 +61,7 @@ export default function Admin() {
               type="password"
               className="w-96 p-2 rounded-md"
               name="password"
+              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

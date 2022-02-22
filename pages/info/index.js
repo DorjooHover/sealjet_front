@@ -44,7 +44,7 @@ function Main(props) {
     return (
       <div className="flex flex-col " key={props.info.info_id}>
         <div className="rounded-md overflow-hidden mb-12 px-2  section_img_1">
-          <img src="/img/product/product_1.jpg" alt="" />
+          <img src={`/img/info/${props.info.img}`} alt="" />
         </div>
         <div key={props.info.info_id}>
           <div className="flex justify-between mr-12">

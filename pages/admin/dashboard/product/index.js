@@ -86,22 +86,24 @@ export default function Product() {
               <h2 className="font-bold text-xl mb-3">Бүтээгдэхүүн</h2>
               <form action="" className="w-full" onSubmit={handleProduct}>
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="title" className="mb-3">
                     Бүтээгдэхүүний нэр
                   </label>
                   <input
                     type="text"
+                    name="title"
+                    id="title"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="type" className="mb-3">
                     Ангилал
                   </label>
                   <select
                     name=""
-                    id=""
+                    id="type"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                   >
                     {categories.map((category) => {
@@ -117,23 +119,25 @@ export default function Product() {
                   </select>
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="description" className="mb-3">
                     Бүтээгдэхүүний дэлгэрэнгүй
                   </label>
                   <textarea
                     type="text"
+                    name="description"
+                    id="description"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4 h-32"
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="file" className="mb-3">
                     Зураг оруулах
                   </label>
                   <input
                     type="file"
-                    name="image"
-                    id="image"
+                    name="file"
+                    id="file"
                     onChange={(e) => setFile(e.target.files[0])}
                   />
                 </div>
@@ -154,11 +158,13 @@ export default function Product() {
                 onSubmit={handleProductDetail}
               >
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="temperature" className="mb-3">
                     Температур
                   </label>
                   <input
                     type="text"
+                    name="temperature"
+                    id="temperature"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                     value={productDetail.temperature}
                     onChange={(e) =>
@@ -170,11 +176,13 @@ export default function Product() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="speed" className="mb-3">
                     Шилжилтийн хурд
                   </label>
                   <input
                     type="text"
+                    name="speed"
+                    id="speed"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                     value={productDetail.speed}
                     onChange={(e) =>
@@ -186,11 +194,13 @@ export default function Product() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="pressure" className="mb-3">
                     Даралт
                   </label>
                   <input
                     type="text"
+                    name="pressure"
+                    id="pressure"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                     value={productDetail.pressure}
                     onChange={(e) =>
@@ -202,11 +212,13 @@ export default function Product() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="undsen_salinik" className="mb-3">
                     Үндсэн сальник
                   </label>
                   <input
                     type="text"
+                    name="undsen_salinik"
+                    id="undsen_salinik"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                     value={productDetail.undsen_salinik}
                     onChange={(e) =>
@@ -218,11 +230,13 @@ export default function Product() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="gogtsoo_rezin" className="mb-3">
                     Гогцоо резин
                   </label>
                   <input
                     type="text"
+                    name="gogtsoo_rezin"
+                    id="gogtsoo_rezin"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                     value={productDetail.gogtsoo_rezin}
                     onChange={(e) =>
@@ -234,11 +248,13 @@ export default function Product() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="tulah_tsagirag" className="mb-3">
                     Тулах цагираг
                   </label>
                   <input
                     type="text"
+                    name="tulah_tsagirag"
+                    id="tulah_tsagirag"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                     value={productDetail.tulah_tsagirag}
                     onChange={(e) =>
@@ -250,10 +266,12 @@ export default function Product() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="v" className="mb-3">
                     Эрчимжүүлэгч
                   </label>
                   <input
+                    name="erchimjuulegch"
+                    id="erchimjuulegch"
                     type="text"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                     value={productDetail.erchimjuulegch}
@@ -267,10 +285,12 @@ export default function Product() {
                 </div>
 
                 <div className="flex flex-col">
-                  <label htmlFor="" className="mb-3">
+                  <label htmlFor="zahiin_tulah" className="mb-3">
                     Захын тулах
                   </label>
                   <input
+                    name="zahiin_tulah"
+                    id="zahiin_tulah"
                     type="text"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
                     value={productDetail.zahiin_tulah}
