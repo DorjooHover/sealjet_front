@@ -5,18 +5,18 @@ import Product from "./product";
 import Infos from "./info";
 import Contact from "../src/components/Contact/Contact";
 import Footer from "../src/components/Contact/Footer";
-export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/api/header");
+import axios from "axios";
+import { useState, useEffect } from "react";
 
-  // const productRes = await fetch('http://localhost:3000/api/product')
-  const data = await res.json();
-  // const productData = await productRes.json()
-  return {
-    // productData: productData
-    props: { data },
+export default function Home() {
+  const [data, setData] = useState([]);
+  const loadData = async () => {
+    const res = await axios.get("http://localhost:3000/api/header/");
+    setData(res.data[0]);
   };
-};
-export default function Home({ data }) {
+  useEffect(() => {
+    loadData();
+  }, [data]);
   return (
     <div>
       <Head>
@@ -32,18 +32,18 @@ export default function Home({ data }) {
       </Head>
 
       <>
-        <Header data={data[0]} />
-        {/* <Product ismain={true} /> */}
+        <Header data={data} />
+        <Product ismain={true} />
         <div className="bg-zinc-100 pt-12">
           <h2 className="title text-2xl font-bold mx-auto px-4">
             Мэдээ, мэдээлэл
           </h2>
-          {/* <Infos data={3} /> */}
+          <Infos data={3} />
         </div>
       </>
       <div id="contacts">
-        {/* <Contact /> */}
-        {/* <Footer /> */}
+        <Contact />
+        <Footer />
       </div>
     </div>
   );

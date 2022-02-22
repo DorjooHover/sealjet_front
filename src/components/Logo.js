@@ -18,7 +18,7 @@ export default function Logo() {
     >
       <SplideSlide>
         <div className="rounded-xl overflow-hidden flex justify-center w-24">
-          <img src="/img/logos/apu.png" alt="" />
+          <img src="/img/logos/apu.png" alt="logo" />
         </div>
       </SplideSlide>
     </Splide>

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Contact from "../../src/components/Contact/Contact";
 import Footer from "../../src/components/Contact/Footer";
+import Image from "next/image";
 function MainContact(props) {
   const isMain = props.ismain;
   if (isMain) {
@@ -22,7 +23,7 @@ function Main(props) {
   const isMain = props.ismain;
   const product = props.product;
   const materialId = props.materialId;
-  // console.log(product)
+
   if (isMain) {
     return <></>;
   } else {
@@ -112,7 +113,13 @@ export default function Product({ ismain }) {
                     onClick={() => handleProduct(p.product_id)}
                   >
                     <div>
-                      <img src="/img/product/product_1.png" />
+                      <Image
+                        src="/img/product/product_1.png"
+                        alt="product"
+                        width="200"
+                        height="140"
+                        layout="responsive"
+                      />
                     </div>
                     <p className="text-zinc-300 py-4 border-t rounded-md overflow-hidden bg-white border-solid">
                       {p.title}

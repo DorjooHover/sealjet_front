@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 function Order(props) {
   const id = props.materialId;
   const product = props.product;
@@ -8,7 +9,13 @@ function Order(props) {
       <div className="pt-12 width m-auto px-20" key={product[0].product_id}>
         <div className="flex mb-10">
           <div className="rounded-lg overflow-hidden bg-white border-zinc-300 border-solid border ">
-            <img src="/img/product/product_1.png" />
+            <Image
+              src="/img/product/product_1.png"
+              alt="product"
+              width="200"
+              height="140"
+              layout="responsive"
+            />
           </div>
           <div className="ml-10 relative">
             <h2 className="font-semibold text-3xl mb-3">{product[0].title}</h2>
@@ -61,7 +68,13 @@ function Order(props) {
       <div className="pt-12 width m-auto px-20" key={product[0].product_id}>
         <div className="flex mb-10">
           <div className="rounded-lg overflow-hidden bg-white border-zinc-300 border-solid border ">
-            <img src="/img/product/product_1.png" />
+          <Image
+              src="/img/product/product_1.png"
+              alt="product"
+              width="200"
+              height="140"
+              layout="responsive"
+            />
           </div>
           <div className="ml-10">
             <h2 className="font-semibold text-3xl mb-3">{product[0].title}</h2>

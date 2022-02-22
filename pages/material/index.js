@@ -14,7 +14,7 @@ export default function Materials() {
   };
   useEffect(() => {
     loadData();
-  }, []);
+  }, [data]);
   return (
     <div>
       <Head>

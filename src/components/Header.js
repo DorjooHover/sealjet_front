@@ -2,19 +2,23 @@ import { Facebook, Instagram } from "@mui/icons-material";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Link } from "@mui/material";
 import Logo from "./Logo";
+import Image from "next/image";
 export default function Header({ data }) {
   return (
     <div className="header relative">
       <span className="opacity-50 z-0 absolute inset-0 h-full w-full bg-black"></span>
       <div className="w-4/5 mx-auto relative z-20 flex flex-nowrap py-12">
         <div className="w-2/5 mr-8">
-          <img src="/img/product/product_1.png" alt="" />
+          <Image
+            src="/public/img/product/product_1.png"
+            alt="Product Image"
+            layout="responsive"
+            width="436"
+            height="288"
+          />
         </div>
         <div className="mt-24">
-          <h2
-            className="text-white font-black text-3xl"
-            key={data.header_id}
-          >
+          <h2 className="text-white font-black text-3xl" key={data.header_id}>
             {data.title}
           </h2>
           <p className="text-white opacity-60 align-justify mt-4">
