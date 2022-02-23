@@ -22,7 +22,7 @@ export default function Navbar() {
         <Stack sx={{ flex: 4, display: "flex" }} className="flex-row relative">
           <Link href="/">
             <a className="mr-7 relative h-14 w-24 ">
-              <img src="/img/sealjet-logo.png" />
+              <img src="/img/sealjet-logo.png" alt='sealjet_logo'/>
             </a>
           </Link>
           <Link href="/">

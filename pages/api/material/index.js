@@ -16,7 +16,10 @@ let storage = multer.diskStorage({
     cb(null, "public/img/material");
   },
   filename: function (req, file, cb) {
-    cb(null, date + "_" + path.extname(file.originalname));
+    cb(
+      null,
+      file.originalname + "_" + date + "_" + path.extname(file.originalname)
+    );
   },
 });
 
@@ -29,7 +32,8 @@ handler.use(uploadFile);
 handler.post(async (req, res) => {
   console.log(req);
   let url = "http://" + req.headers.host;
-  let filename = date + "_" + path.extname(file.originalname);
+  let filename =
+    file.originalname + "_" + date + "_" + path.extname(file.originalname);
   let name = req.body.name;
   let description = req.body.description;
   console.log(filename, name, description);
@@ -42,6 +46,8 @@ handler.post(async (req, res) => {
     url:
       url +
       "/public/img/material" +
+      file.originalname +
+      "_" +
       date +
       "_" +
       path.extname(file.originalname),

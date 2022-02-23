@@ -20,24 +20,25 @@ const getInfoById = async (req, res) => {
 
   try {
     let allDataLength = await executeQuery(`
-          select max(info_id) as num from infos
-          `);
+        select count(info_id) as numbers, max(info_id) as num from infos 
+        `);
     if (perPageNum > allDataLength[0].num) {
       perPageNum = allDataLength[0].num;
     }
-    let pageNum = allDataLength[0].num - (id - 1) * perPageNum;
+    let pageNum = allDataLength[0].num - ((id - 1) * perPageNum);
     let infoData = await executeQuery(
       `
           select * from infos 
           where info_id <= ${pageNum}
           and info_id > (${pageNum} - ${perPageNum})
-          order by info_id desc`,
+          order by info_id desc
+      `,
       []
     );
 
     res.status(200).json({
       infoData: infoData,
-      page: Math.ceil(allDataLength[0].num / perPageNum),
+      page: Math.ceil(allDataLength[0].numbers / perPageNum),
     });
   } catch (error) {
     res.status(500).json(error);

@@ -113,13 +113,7 @@ export default function Product({ ismain }) {
                     onClick={() => handleProduct(p.product_id)}
                   >
                     <div>
-                      <Image
-                        src="/img/product/product_1.png"
-                        alt="product"
-                        width="200"
-                        height="140"
-                        layout="responsive"
-                      />
+                      <img src="/img/product/product_1.png" alt="product" />
                     </div>
                     <p className="text-zinc-300 py-4 border-t rounded-md overflow-hidden bg-white border-solid">
                       {p.title}
