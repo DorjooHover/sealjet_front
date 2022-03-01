@@ -15,23 +15,19 @@ const getAllInfos = async (req, res) => {
   }
 };
 const getInfoById = async (req, res) => {
-  let id = req.query.id;
-  let perPageNum = req.query.per;
+  let id = parseInt(req.query.id);
+  let perPageNum = parseInt(req.query.per);
+  let order_id = (id - 1) * perPageNum;
 
   try {
     let allDataLength = await executeQuery(`
-        select count(info_id) as numbers, max(info_id) as num from infos 
+        select count(info_id) as numbers from infos 
         `);
-    if (perPageNum > allDataLength[0].num) {
-      perPageNum = allDataLength[0].num;
-    }
-    let pageNum = allDataLength[0].num - ((id - 1) * perPageNum);
     let infoData = await executeQuery(
       `
           select * from infos 
-          where info_id <= ${pageNum}
-          and info_id > (${pageNum} - ${perPageNum})
           order by info_id desc
+          limit ${order_id}, ${perPageNum}
       `,
       []
     );

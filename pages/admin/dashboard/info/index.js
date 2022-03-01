@@ -5,17 +5,69 @@ import { Delete, Edit } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import Head from "next/head";
 export default function Info() {
-  const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [infos, setInfos] = useState([]);
   const [perPage, setPerPage] = useState();
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(5);
+  const [imageSrc, setImageSrc] = useState();
+  const [uploadData, setUploadData] = useState();
+  const [image, setImage] = useState();
+  function handleOnChange(changeEvent) {
+    const reader = new FileReader();
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }) => name === "file"
+    );
+    const formData = new FormData();
+    for (const file of fileInput.files) {
+      formData.append("file", file);
+    }
+    formData.append("upload_preset", "sealjet");
+
+    const data = await fetch(
+      "https://api.cloudinary.com/v1_1/monex-solution/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    ).then((r) => r.json());
+    console.log(image);
+    setImage(data.secure_url);
+    let res = await axios.post(`http://localhost:3000/api/info`, {
+      params: {
+        title,
+        description,
+        image,
+      },
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    setTitle("");
+    setDescription("");
+  };
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    let id = e.target.id;
+    let res = await axios.delete(`http://localhost:3000/api/info/${id}`);
+  };
   const loadInfos = async () => {
     let info = await axios({
       method: "get",
       url: `http://localhost:3000/api/info/${page}`,
+
       params: {
         per: pages,
       },
@@ -26,36 +78,12 @@ export default function Info() {
   useEffect(() => {
     loadInfos();
   }, [infos, perPage]);
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    let id = e.target.id;
-    let res = await axios.delete(`http://localhost:3000/api/info/${id}`);
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(file, title, description);
-    const formData = new FormData();
-    formData.append("file", file);
-    let res = await axios.post(`http://localhost:3000/api/info`, formData, {
-      params: {
-        title,
-        description,
-      },
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-
-    setFile(null);
-    setTitle("");
-    setDescription("");
-  };
 
   return (
     <div className="absolute top-0 h-screen w-screen">
       <Head>
         <title>Мэдээ</title>
-        <link rel="shortcut icon" href="/img/sealjet-logo.png"></link>
+        <link rel="icon" href="/img/logo.png" sizes="100x100" />
       </Head>
       <div className="flex">
         <SideBar />
@@ -64,7 +92,7 @@ export default function Info() {
             <div className="mr-32">
               <h2 className="font-bold text-xl">Мэдээ</h2>
               <div className="flex mt-4">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} method="post">
                   <div className="flex flex-col">
                     <label htmlFor="title" className="mb-3">
                       Мэдээний гарчиг
@@ -100,7 +128,7 @@ export default function Info() {
                       type="file"
                       name="file"
                       id="file"
-                      onChange={(e) => setFile(e.target.files[0])}
+                      onChange={handleOnChange}
                     />
                   </div>
                   <input

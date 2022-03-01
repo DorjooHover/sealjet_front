@@ -4,7 +4,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 export default function Product() {
   const [categories, setCategories] = useState([]);
-  const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [productId, setProductId] = useState("");
@@ -18,6 +17,18 @@ export default function Product() {
     erchimjuulegch: "",
     zahiin_tulah: "",
   });
+  const [imageSrc, setImageSrc] = useState();
+  const [uploadData, setUploadData] = useState();
+  const [image, setImage] = useState();
+  function handleOnChange(changeEvent) {
+    const reader = new FileReader();
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+  }
   const loadCategory = async () => {
     let res = await axios.get(`http://localhost:3000/api/category`, []);
     setCategories(res.data);
@@ -28,10 +39,27 @@ export default function Product() {
   const handleProduct = async (e) => {
     e.preventDefault();
     const categoryId = e.target[1].selectedOptions[0].id;
+    const form = e.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }) => name === "file"
+    );
     const formData = new FormData();
-    formData.append("file", file);
-    let res = await axios.post(`http://localhost:3000/api/product`, formData, {
+    for (const file of fileInput.files) {
+      formData.append("file", file);
+    }
+    formData.append("upload_preset", "sealjet");
+
+    const data = await fetch(
+      "https://api.cloudinary.com/v1_1/monex-solution/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    ).then((r) => r.json());
+    setImage(data.secure_url);
+    let res = await axios.post(`http://localhost:3000/api/product`, {
       params: {
+        image,
         title,
         description,
         categoryId,
@@ -42,7 +70,7 @@ export default function Product() {
     });
     setProductId(res.data.result.insertId);
   };
-  console.log(productId);
+
   const handleProductDetail = async (e) => {
     e.preventDefault();
     let res = await axios.post(`http://localhost:3000/api/product_detail`, {
@@ -76,7 +104,7 @@ export default function Product() {
     <div className="absolute top-0 h-screen w-screen">
       <Head>
         <title>Бүтээгдэхүүн</title>
-        <link rel="shortcut icon" href="/img/sealjet-logo.png"></link>
+        <link rel="icon" href="/img/logo.png" sizes="100x100" />
       </Head>
       <div className="flex">
         <SideBar />
@@ -94,6 +122,7 @@ export default function Product() {
                     name="title"
                     id="title"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4"
+                    value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
@@ -108,10 +137,7 @@ export default function Product() {
                   >
                     {categories.map((category) => {
                       return (
-                        <option
-                          id={category.category_id}
-                          key={category.catergoy_id}
-                        >
+                        <option id={category.category_id} key={category.category_id}>
                           {category.type}
                         </option>
                       );
@@ -127,6 +153,7 @@ export default function Product() {
                     name="description"
                     id="description"
                     className="w-96 rounded-md border-gray-300 border-solid border py-2 px-3 mb-4 h-32"
+                    value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
@@ -138,13 +165,13 @@ export default function Product() {
                     type="file"
                     name="file"
                     id="file"
-                    onChange={(e) => setFile(e.target.files[0])}
+                    onChange={handleOnChange}
                   />
                 </div>
                 <input
                   type="submit"
                   value="Нийтлэх"
-                  className="mt-6 py-2 rounded-full bg text-white font-bold w-48"
+                  className="mt-6 py-2 rounded-full bg text-white font-bold w-48 cursor-pointer"
                 />
               </form>
             </div>
@@ -306,7 +333,7 @@ export default function Product() {
                 <input
                   type="submit"
                   value="Нийтлэх"
-                  className="mt-6 py-2 rounded-full bg text-white font-bold w-48"
+                  className="mt-6 py-2 rounded-full bg text-white font-bold w-48 cursor-pointer"
                 />
               </form>
             </div>

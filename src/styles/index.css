@@ -19,6 +19,9 @@
 .bg {
     background:#395C4D;
 }
+.text_color {
+    color:#395C4D;
+}
 img {
     width: 100%;
 }
@@ -56,6 +59,9 @@ img {
 .section_text {
     color: #78847D;
 }
+.section_content {
+    flex: 2;
+}
 .width, .css-1oqqzyl-MuiContainer-root, .footer, .title, .css-camo0u-MuiContainer-root {
     max-width: 90% !important;
 }
@@ -73,8 +79,12 @@ img {
     width: 100%;
     height: 100%;
 }
+.main_btn {
+    left: 100%;
+    transform: translateX(-100%);
+}
 .contact_img, .contact_map {
-    width: 40%;
+    width: 30%;
 }
 
 .contact_ceil {
@@ -130,4 +140,7 @@ img {
 }
 .footer_text {
     color:#0F2B1E;
+}
+.table_text {
+    color: #253D32;
 }

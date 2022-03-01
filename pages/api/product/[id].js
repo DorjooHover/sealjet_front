@@ -1,8 +1,7 @@
-import nc from 'next-connect'
-import {getAllProducts} from '../../../controller/product/product' 
+import nc from "next-connect";
+import { getAllProducts } from "../../../controller/product/product";
 
-const handler = nc()
-handler.get(getAllProducts)
+const handler = nc();
+handler.get(getAllProducts);
 
-
-export default handler
+export default handler;

@@ -38,7 +38,7 @@ export default function Setting() {
     <div className="absolute top-0 h-screen w-screen">
       <Head>
         <title>Тохиргоо</title>
-        <link rel="shortcut icon" href="/img/sealjet-logo.png"></link>
+        <link rel="icon" href="/img/logo.png" sizes="100x100" />
       </Head>
       <div className="flex">
         <SideBar />

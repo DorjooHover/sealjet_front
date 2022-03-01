@@ -3,7 +3,6 @@ import { useState } from "react";
 import axios from "axios";
 export default function Orders() {
   const router = useRouter();
-  const [file, setFile] = useState(null);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [comment, setComment] = useState("");
@@ -11,16 +10,46 @@ export default function Orders() {
   const [gadnaD, setGadnaD] = useState(0);
   const [dotorD, setDotorD] = useState(0);
   const [email, setEmail] = useState("");
+  const [imageSrc, setImageSrc] = useState();
+  const [uploadData, setUploadData] = useState();
+  const [image, setImage] = useState();
+  function handleOnChange(changeEvent) {
+    const reader = new FileReader();
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+  }
+
   const material_id = router.query.material_id;
   const product_id = router.query.product_id;
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }) => name === "file"
+    );
     const formData = new FormData();
-    formData.append("file", file);
-    let res = await axios.post(`http://localhost:3000/api/order`, formData, {
+    for (const file of fileInput.files) {
+      formData.append("file", file);
+    }
+    formData.append("upload_preset", "sealjet");
+
+    const data = await fetch(
+      "https://api.cloudinary.com/v1_1/monex-solution/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    ).then((r) => r.json());
+    setImage(data.secure_url);
+    let res = await axios.post(`http://localhost:3000/api/order`, {
       params: {
         name,
         phone,
+        image,
         comment,
         height,
         gadnaD,
@@ -34,7 +63,6 @@ export default function Orders() {
       },
     });
 
-    setFile(null);
     setName("");
     setComment("");
     setHeight(0);
@@ -46,7 +74,11 @@ export default function Orders() {
   return (
     <div>
       <h2 className="title text-2xl font-bold mx-auto  py-5">Захиалах </h2>
-      <form onSubmit={handleSubmit} className="title mx-auto py-10">
+      <form
+        onSubmit={handleSubmit}
+        method="post"
+        className="title mx-auto py-10"
+      >
         <div className="flex justify-between">
           <div className="flex flex-col">
             <label htmlFor="name" className="mb-3">
@@ -99,7 +131,7 @@ export default function Orders() {
               name="file"
               id="file"
               // value={file}
-              onChange={(e) => setFile(e.target.files[0])}
+              onChange={handleOnChange}
             />
           </div>
         </div>

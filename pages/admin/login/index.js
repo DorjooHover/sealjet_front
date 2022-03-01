@@ -21,6 +21,7 @@ export default function Admin() {
   const [password, setPassword] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(admin[0]);
     admin[0].name == username && admin[0].password == password
       ? router.push({
           pathname: "/admin/dashboard/order",
@@ -32,7 +33,7 @@ export default function Admin() {
     <div className="absolute top-0 z-40">
       <Head>
         <title>Нэвтрэх</title>
-        <link rel="shortcut icon" href="/img/sealjet-logo.png"></link>
+        <link rel="icon" href="/img/logo.png" sizes="100x100" />
       </Head>
       <div className="bg h-screen w-screen w-screen flex items-center justify-center flex-col">
         <div className="h-20 mb-12">

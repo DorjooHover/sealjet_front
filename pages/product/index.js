@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Contact from "../../src/components/Contact/Contact";
 import Footer from "../../src/components/Contact/Footer";
+import Head from "next/head";
 import Image from "next/image";
 function MainContact(props) {
   const isMain = props.ismain;
@@ -34,6 +35,20 @@ function Main(props) {
     }
   }
 }
+function Current_btn(props) {
+  let id = props.id;
+  let page = props.page;
+  let d = props.d;
+  if (id == page) {
+    return (
+      <button className="text-white font-bold py-2 px-4 bg">{d.type}</button>
+    );
+  } else {
+    return (
+      <button className="text-white font-bold py-2 px-4 ">{d.type}</button>
+    );
+  }
+}
 export default function Product({ ismain }) {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
@@ -47,33 +62,32 @@ export default function Product({ ismain }) {
 
   const router = useRouter();
   const loadProduct = async () => {
-    const response = await axios.get(`http://localhost:3000/api/category`);
-    setData(response.data);
+    const response = await axios.get(`http://localhost:3000/api/category`).then((res) => setData(res.data));
+
     const res = await axios({
       method: "get",
       url: `http://localhost:3000/api/product/${page}`,
       params: {
         per: pages,
       },
-    });
-    setProducts(res.data);
-    const count = await axios({
+    }).then((response) => setProducts(response.data));
+
+    const counts = await axios({
       method: "get",
       url: `http://localhost:3000/api/product_count/${page}`,
-    });
-    setCount(Math.ceil(count.data[0].counts / 5));
+    }).then((res) => setCount(Math.ceil(res.data[0]/5)));
+
     const product = await axios({
       method: "get",
       url: `http://localhost:3000/api/product_detail/${productId}`,
-    });
-
-    setProduct(product.data);
+    }).then((res) => setProduct(res.data))
     setMaterialId(router.query.material_id);
   };
 
-  const handlerSubmit = (id) => {
-    setPage(id);
-    setCategoryTitle(data[id - 1].type);
+  const handlerSubmit = (e) => {
+    console.log(e);
+    // setPage(id);
+    // setCategoryTitle(data[id - 1].type);
   };
   const handleProduct = (id) => {
     setProductId(id);
@@ -81,20 +95,24 @@ export default function Product({ ismain }) {
 
   useEffect(() => {
     loadProduct();
-  }, [products, productId]);
+  }, [products, product, count, materialId]);
   return (
     <>
+      <Head>
+        <title>Бүтээгдэхүүн</title>
+        <link rel="icon" href="/img/logo.png" sizes="100x100" />
+      </Head>
       <div className="bg-zinc-100 ">
         <div className="flex justify-between px-32 bg-emerald-800">
           {data.map((d) => {
             return (
-              <div className="flex py-2 px-4" key={d.category_id}>
-                <button
-                  onClick={() => handlerSubmit(d.category_id)}
-                  className="text-white font-bold"
-                >
-                  {d.type}
-                </button>
+              <div className="flex" key={d.category_id}>
+                <Current_btn
+                  id={d.category_id}
+                  page={page}
+                  d={d}
+                  onClick={() => handlerSubmit}
+                />
               </div>
             );
           })}

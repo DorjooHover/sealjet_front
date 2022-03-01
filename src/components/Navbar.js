@@ -35,11 +35,11 @@ export default function Navbar() {
               Бүтээгдэхүүн
             </a>
           </Link>
-          {/* <Link href="/material">
+          <Link href="/material">
             <a className="mx-7 font-medium flex items-center text-white">
               Материал
             </a>
-          </Link> */}
+          </Link>
 
           <Link href="/info">
             <a className="mx-7 font-medium flex items-center text-white">
@@ -52,11 +52,11 @@ export default function Navbar() {
             </a>
           </Link>
 
-          <Link href="/order">
+          {/* <Link href="/order">
             <a className="mx-7 font-medium flex items-center text-white">
               Захиалах
             </a>
-          </Link>
+          </Link> */}
         </Stack>
 
         <Paper

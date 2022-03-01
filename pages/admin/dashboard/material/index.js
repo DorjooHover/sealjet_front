@@ -3,16 +3,43 @@ import SideBar from "../../../../src/components/Sidebar";
 import axios from "axios";
 import Head from "next/head";
 export default function Material() {
-  const [file, setFile] = useState(null);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [imageSrc, setImageSrc] = useState();
+  const [uploadData, setUploadData] = useState();
+  const [image, setImage] = useState();
+  function handleOnChange(changeEvent) {
+    const reader = new FileReader();
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(file, name, description);
+    const form = e.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }) => name === "file"
+    );
     const formData = new FormData();
-    formData.append("file", file);
-    let res = await axios.post(`http://localhost:3000/api/material`, formData, {
+    for (const file of fileInput.files) {
+      formData.append("file", file);
+    }
+    formData.append("upload_preset", "sealjet");
+
+    const data = await fetch(
+      "https://api.cloudinary.com/v1_1/monex-solution/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    ).then((r) => r.json());
+    setImage(data.secure_url);
+    let res = await axios.post(`http://localhost:3000/api/material`, {
       params: {
+        image,
         name,
         description,
       },
@@ -21,7 +48,6 @@ export default function Material() {
       },
     });
 
-    setFile(null);
     setName("");
     setDescription("");
   };
@@ -30,7 +56,7 @@ export default function Material() {
     <div className="absolute top-0 h-screen w-screen">
       <Head>
         <title>Материал</title>
-        <link rel="shortcut icon" href="/img/sealjet-logo.png"></link>
+        <link rel="icon" href="/img/logo.png" sizes="100x100" />
       </Head>
       <div className="flex">
         <SideBar />
@@ -69,9 +95,9 @@ export default function Material() {
               </label>
               <input
                 type="file"
-                name="image"
+                name="file"
                 id="image"
-                onChange={(e) => setFile(e.target.files[0])}
+                onChange={handleOnChange}
               />
             </div>
             <input

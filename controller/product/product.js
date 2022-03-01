@@ -2,12 +2,15 @@ import { executeQuery } from "../../config/db";
 
 const getAllProducts = async (req, res) => {
   let c_id = req.query.id;
-  let id = req.query.per;
+  let id = parseInt(req.query.per);
+  let product_id = (id - 1) * 5;
+  let per = 5;
   try {
     let productData = await executeQuery(
       ` 
-        select * from products
-        where category_id = ${c_id} and product_id >= ${id} and product_id <= ${id} + 5
+      select * from products
+      where category_id = ${c_id}
+      limit ${product_id}, ${per}
       `,
       []
     );

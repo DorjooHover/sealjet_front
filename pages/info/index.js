@@ -13,6 +13,9 @@ import {
 import Header from "../../src/components/Info/Header";
 import Contact from "../../src/components/Contact/Contact";
 import Footer from "../../src/components/Contact/Footer";
+import Head from "next/head";
+import Image from "next/image";
+import { useRouter } from "next/router";
 function MainContact(props) {
   const isMain = props.ismain;
   if (isMain != 5) {
@@ -20,10 +23,10 @@ function MainContact(props) {
   } else {
     return (
       <>
-      <Footer />
-      <Contact />
-    </>
-    )
+        <Contact />
+        <Footer />
+      </>
+    );
   }
 }
 function Title(props) {
@@ -36,15 +39,21 @@ function Title(props) {
     return <></>;
   }
 }
+
 function Main(props) {
   const isMain = props.ismain;
   if (isMain == 5) {
     return <Info data={props.info} key={props.info.info_id} />;
   } else {
     return (
-      <div className="flex flex-col " key={props.info.info_id}>
-        <div className="rounded-md overflow-hidden mb-12 px-2  section_img_1">
-          <img src={`/img/anime.jpg`} alt="info" />
+      <div
+        className="flex flex-col "
+        key={props.info.info_id}
+        onClick={() => handleInfo}
+      >
+        <div className=" mb-12  section_img_1 rounded-md overflow-hidden">
+          {/* <img src={props.info.img} alt="info" /> */}
+          <img src="/img/product/product_1.jpg" alt="info" />
         </div>
         <div key={props.info.info_id}>
           <div className="flex justify-between mr-12">
@@ -81,8 +90,12 @@ export default function Infos({ data }) {
 
   return (
     <>
+      <Head>
+        <title>Мэдээ</title>
+        <link rel="icon" href="/img/logo.png" sizes="100x100" />
+      </Head>
       <Container component={Box} className="mt-6 ">
-        <div className="grid section_grid gap-3">
+        <div className="grid section_grid gap-6">
           {infos.map((info) => {
             return (
               <Title
@@ -100,7 +113,7 @@ export default function Infos({ data }) {
             container
             spacing={2}
             justifyContent="center"
-            className="grid grid-cols-3"
+            className="grid grid-cols-3 gap-4"
           >
             {infos.map((info) => {
               return <Main ismain={pages} info={info} key={info.info_id} />;
