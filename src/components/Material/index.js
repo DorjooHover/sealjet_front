@@ -6,7 +6,7 @@ export default function Material(data) {
   return (
     <div className="flex mb-12">
       <div className="rounded-md overflow-hidden  px-2 section_img">
-        <img src="/img/product/product_1.jpg" alt="" />
+        <img src={data.data.img} alt="" />
       </div>
       <div className="ml-12 relative h-full section_content">
         <div className="flex justify-between items-center ">

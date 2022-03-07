@@ -6,6 +6,8 @@ import {
   FormatPaint,
   Feed,
   Settings,
+  GroupWork,
+  CameraFront,
 } from "@mui/icons-material";
 export default function SideBar() {
   //   [color, setColor] = useState("");
@@ -47,6 +49,22 @@ export default function SideBar() {
             <a className="text-gray-400">
               <Feed className="mr-2" />
               Мэдээ
+            </a>
+          </Link>
+        </li>
+        <li className="mb-4">
+          <Link href="/admin/dashboard/header">
+            <a className="text-gray-400">
+              <CameraFront className="mr-2" />
+              Нүүр
+            </a>
+          </Link>
+        </li>
+        <li className="mb-4">
+          <Link href="/admin/dashboard/logo">
+            <a className="text-gray-400">
+              <GroupWork className="mr-2" />
+              Лого
             </a>
           </Link>
         </li>

@@ -5,8 +5,8 @@ function Date(props) {
 export default function Info(data) {
   return (
     <div className="flex flex-1 col-span-3" key={data.data.info_key}>
-      <div className="rounded-md overflow-hidden mb-12 px-2 section_img ">
-        <img src="/img/product/product_1.jpg" alt="" />
+      <div className="rounded-md overflow-hidden mb-12 px-2 section_img flex items-center">
+        <img src={data.data.img} alt="" className="h-full w-auto" />
       </div>
       <div className="section_info ml-6">
         <div className="flex justify-between items-center ">

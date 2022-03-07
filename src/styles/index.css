@@ -19,6 +19,9 @@
 .bg {
     background:#395C4D;
 }
+.bg_1 {
+    background: #E5E5E5;
+}
 .text_color {
     color:#395C4D;
 }
@@ -84,7 +87,7 @@ img {
     transform: translateX(-100%);
 }
 .contact_img, .contact_map {
-    width: 30%;
+    width: 30vw;
 }
 
 .contact_ceil {
@@ -143,4 +146,7 @@ img {
 }
 .table_text {
     color: #253D32;
+}
+.order_detail {
+    transform: translateY(-50%);
 }

@@ -53,7 +53,7 @@ function Main(props) {
       >
         <div className=" mb-12  section_img_1 rounded-md overflow-hidden">
           {/* <img src={props.info.img} alt="info" /> */}
-          <img src="/img/product/product_1.jpg" alt="info" />
+          <img src={props.info.img} alt="info" />
         </div>
         <div key={props.info.info_id}>
           <div className="flex justify-between mr-12">
