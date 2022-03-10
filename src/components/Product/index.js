@@ -4,7 +4,9 @@ import Image from "next/image";
 function Undsen_salinik(props) {
   let product = props.product[0].undsen_salinik;
   if (product !== null) {
-    return <td className="font-medium text-base table_text">Үндсэн сальник</td>;
+    return (
+      <td className="font-medium text-base table_text px-1">Үндсэн сальник</td>
+    );
   } else {
     return <></>;
   }
@@ -12,7 +14,9 @@ function Undsen_salinik(props) {
 function Tulah_tsagirag(props) {
   let product = props.product[0].tulah_tsagirag;
   if (product !== null) {
-    return <td className="font-medium text-lg table_text">Туалах цагираг</td>;
+    return (
+      <td className="font-medium text-lg table_text px-1">Туалах цагираг</td>
+    );
   } else {
     return <></>;
   }
@@ -20,7 +24,9 @@ function Tulah_tsagirag(props) {
 function Gogtsoo_rezin(props) {
   let product = props.product[0].gogtsoo_rezin;
   if (product !== null) {
-    return <td className="font-medium text-lg table_text">Гогцоо резин</td>;
+    return (
+      <td className="font-medium text-lg table_text px-1">Гогцоо резин</td>
+    );
   } else {
     return <></>;
   }
@@ -28,7 +34,9 @@ function Gogtsoo_rezin(props) {
 function Erchimjuulegch(props) {
   let product = props.product[0].erchimjuulegch;
   if (product !== null) {
-    return <td className="font-medium text-lg table_text">Эрчимжүүлэгч</td>;
+    return (
+      <td className="font-medium text-lg table_text px-1">Эрчимжүүлэгч</td>
+    );
   } else {
     return <></>;
   }
@@ -36,7 +44,7 @@ function Erchimjuulegch(props) {
 function Zahiin_tulah(props) {
   let product = props.product[0].zahiin_tulah;
   if (product !== null) {
-    return <td className="font-medium text-lg table_text">Захын тулах</td>;
+    return <td className="font-medium text-lg table_text px-1">Захын тулах</td>;
   } else {
     return <></>;
   }
@@ -46,9 +54,12 @@ function Order(props) {
   const product = props.product;
   if (id !== undefined) {
     return (
-      <div className="pt-12 width m-auto px-20" key={product[0].product_id}>
-        <div className="flex mb-10">
-          <div className="rounded-lg overflow-hidden bg-white border-zinc-300 border-solid border ">
+      <div
+        className="pt-12 width m-auto px-20 product_detail"
+        key={product[0].product_id}
+      >
+        <div className="flex mb-10 product_detail_main">
+          <div className="rounded-lg overflow-hidden flex items-center bg-white border-zinc-300 border-solid border ">
             {/* <Image
               src="/img/product/product_1.png"
               alt="product"
@@ -81,29 +92,29 @@ function Order(props) {
           </div>
         </div>
 
-        <table className="w-full">
+        <table className="w-full product_detail_add">
           <thead>
             <tr>
-              <td className="uppercase table_text text-xl font-semibold">
+              <td className="uppercase px-2 table_text text-xl font-semibold">
                 Температур
               </td>
-              <td className="uppercase table_text text-xl font-semibold">
+              <td className="uppercase px-2 table_text text-xl font-semibold">
                 Шилжилтийн хурд
               </td>
-              <td className="uppercase table_text text-xl font-semibold">
+              <td className="uppercase px-2 table_text text-xl font-semibold">
                 даралт
               </td>
               <td
-                className="uppercase text-center table_text text-xl font-semibold"
+                className="uppercase px-2 text-center table_text text-xl font-semibold"
                 colSpan="5"
               >
                 материал
               </td>
             </tr>
             <tr>
-              <td className="h-6"></td>
-              <td className="h-6"></td>
-              <td className="h-6"></td>
+              <td className="h-6 px-2"></td>
+              <td className="h-6 px-2"></td>
+              <td className="h-6 px-2"></td>
               <Undsen_salinik product={product} />
               <Tulah_tsagirag product={product} />
               <Gogtsoo_rezin product={product} />
@@ -151,7 +162,7 @@ function Order(props) {
         </div>
 
         <table className="w-full">
-        <thead>
+          <thead>
             <tr>
               <td className="uppercase table_text text-xl font-semibold">
                 Температур

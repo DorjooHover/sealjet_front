@@ -78,14 +78,14 @@ export default function Orders() {
         <title>Захиалга</title>
         <link rel="icon" href="/img/logo.png" sizes="100x100" />
       </Head>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center order">
         <h2 className="title text-2xl font-bold mx-auto  py-5">Захиалах </h2>
         <form
           onSubmit={handleSubmit}
           method="post"
           className="title mx-auto py-10"
         >
-          <div className="flex ">
+          <div className="flex o_detail">
             <div className="flex flex-col mr-8">
               <label htmlFor="name" className="mb-3">
                 Овог, нэр
@@ -114,7 +114,7 @@ export default function Orders() {
             </div>
           </div>
 
-          <div className="flex justify-between">
+          <div className="flex justify-between o_detail">
             <div className="flex flex-col">
               <label htmlFor="email" className="mb-3">
                 Цахим хаяг
@@ -128,7 +128,7 @@ export default function Orders() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="flex flex-col w-96">
+            <div className="flex flex-col w-96 m_b">
               <label htmlFor="file" className="mb-3">
                 Зураг оруулах
               </label>
@@ -141,8 +141,8 @@ export default function Orders() {
               />
             </div>
           </div>
-          <div className="flex items-center justify-between">
-            <div>
+          <div className="flex items-center justify-between o_detail">
+            <div className="m_b">
               <label htmlFor="gadna_d" className="mr-4">
                 Гадна диаметр
               </label>
@@ -156,7 +156,7 @@ export default function Orders() {
               />
               см
             </div>
-            <div>
+            <div className='m_b'>
               <label htmlFor="dotor_d" className="mr-4">
                 Дотор диаметр
               </label>
@@ -170,7 +170,7 @@ export default function Orders() {
               />
               см
             </div>
-            <div>
+            <div className='m_b'>
               <label htmlFor="height" className="mr-4">
                 Өндөр
               </label>
@@ -185,7 +185,7 @@ export default function Orders() {
               см
             </div>
           </div>
-          <div className="flex justify-between items-end mt-3">
+          <div className="flex justify-between items-end mt-3 o_detail">
             <div className="flex flex-col">
               <label htmlFor="comment" className="mb-3">
                 Хүсэлт

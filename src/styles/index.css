@@ -150,3 +150,209 @@ img {
 .order_detail {
     transform: translateY(-50%);
 }
+
+.navbar_mobile {
+    display: none;
+}
+.bg-zinc-100 {
+    padding-bottom: 1rem;
+}
+
+@media screen and (min-width:1024px ) {
+    .product_grid {
+        grid-template-columns: repeat(5, 1fr)
+    }
+}
+
+@media screen and (max-width:1280px ) {
+    .navbar {
+        padding: 0.5rem 2rem;
+    }
+    .navbar .mx-7 {
+        margin: 0 1.2rem;
+        font-size: 1rem;
+    }
+    .navbar .w-24 {
+        width: 5rem;
+    }
+    .navbar .flex-row {
+        flex: 3;
+    }
+    .search svg {
+        width: 1.5rem;
+    }
+    .search button {
+        padding-left: 0.25rem;
+    }
+    .search input {
+        font-size: 0.8rem;
+    }
+    .info_container {
+        padding: 0;
+    }
+    .info_container .gap-6 {
+        grid-gap: 0.8rem;
+    }
+    .section_title {
+        font-size: 1.2rem;
+    }
+    .contact .address {
+        padding-left: 5rem;
+        padding-right: 1rem;
+    }
+    .address h2 {
+        font-size: 1.5rem;
+    }
+    .address p {
+        font-size: 1rem;
+    }
+    .contact .img {
+        padding-right: 5rem;
+        padding-left:1rem;
+    }
+    .contact .h-96 {
+        height: 15rem;
+    }
+    .section_img {
+        margin-bottom: 1.5rem;
+    }
+    .social a{
+        padding: 1rem 0.5rem;
+    }
+    .social svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+}
+@media screen and (max-width:1024px ) {
+    .navbar .mx-7 {
+        margin: 0 1rem;
+        font-size: 1rem;
+    }
+    .navbar .w-24 {
+        width: 4rem;
+    }
+    .section_grid_main {
+        display: none;
+    }
+    .section_grid_index {
+        grid-column: 1 / span 4;
+        grid-row: 1 / span  16;
+
+    }
+    .contact .img {
+        padding-right: 2rem;
+    }
+    .footer .w-2\/5 {
+        width: 45%;
+    }
+    .material {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .info_detail {
+        grid-column: 1 / span 3;
+    }
+    .header_content .mt-24 {
+        margin: 0;
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        padding: 3rem 0;
+    }
+    .category {
+        width: 100%;
+        padding: 0 5%;
+        overflow-x: scroll;
+    }
+    .o_detail {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .order form {
+        padding: 0;
+    }
+    .m_b {
+        margin-bottom:1rem;
+    }
+    .order .mr-8 {
+        margin: 0;
+    }
+    .width {
+        padding: 0;
+        padding-top: 3rem;
+    }
+    
+}
+@media screen and (max-width: 768px) {
+    .navbar_desktop {
+        display: none;
+    }
+    .navbar_mobile {
+        display: flex;
+    }
+    .navbar_mobile .mr-7 {
+        margin: 0;
+    }
+    .navbar_mobile .pl-2 {
+        padding: 0;
+    }
+    .product_detail_main {
+        flex-direction: column;
+    }
+    .product_detail_main .ml-10{
+        margin: 0;
+        margin-top: 2rem;
+    }
+    .product_detail_main .text-3xl {
+        font-size: 1.5rem;
+    }
+    .product_detail_add .text-xl{
+        font-size: 1rem;
+    }
+    .product_detail_add .text-base {
+        font-size: 0.9rem;
+    }
+    .product_detail_add tbody tr td {
+        font-size: 0.9rem;
+    }
+    .contact_box_6, .contact_box_5, .contact_box_4,.contact_box_3, .contact_box_2, .contact_box_1, .contact_ceil {
+        display: none;
+    }
+    .contact .address {
+        padding-left: 1rem;
+    }
+    .footer {
+        flex-direction: column;
+        padding: 2rem 0;
+    }
+    .footer .w-2\/5 {
+        width: 100%;
+    }
+    .footer .w-2\/5:first-child {
+        margin-bottom: 1.5rem;
+    }
+    .contact_container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .address {
+        padding-top: 0;
+    }
+    
+}
+@media screen and (max-width: 500px) {
+    .order .w-96 {
+        width: 18rem;
+    }
+    .product_detail_add .text-xl{
+        font-size: 0.7rem;
+    }
+    .product_detail_add .text-base {
+        font-size: 0.6rem;
+    }
+    .product_detail_add tbody tr td {
+        font-size: 0.6rem;
+    }
+}

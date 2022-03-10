@@ -3,8 +3,8 @@ import { executeQuery } from "../../config/db";
 const getAllProducts = async (req, res) => {
   let c_id = req.query.id;
   let id = parseInt(req.query.per);
-  let product_id = (id - 1) * 5;
-  let per = 5;
+  let per = parseInt(req.query.perPage);
+  let product_id = (id - 1) * per;
   try {
     let productCount = await executeQuery(
       `select count(product_id) as counts from products where category_id=${c_id} `,

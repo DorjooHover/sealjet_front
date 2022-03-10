@@ -47,16 +47,16 @@ function Main(props) {
   } else {
     return (
       <div
-        className="flex flex-col "
+        className="flex flex-col info_detail"
         key={props.info.info_id}
         onClick={() => handleInfo}
       >
-        <div className=" mb-12  section_img_1 rounded-md overflow-hidden">
+        <div className=" mb-12 section_img_1 rounded-md overflow-hidden section_img flex items-center">
           {/* <img src={props.info.img} alt="info" /> */}
           <img src={props.info.img} alt="info" />
         </div>
         <div key={props.info.info_id}>
-          <div className="flex justify-between mr-12">
+          <div className="flex justify-between ">
             <h2 className="section_title font-medium mb-3 uppercase text-3xl ">
               {props.info.title}
             </h2>
@@ -85,16 +85,19 @@ export default function Infos({ data }) {
     setPerPage(res.data.page);
   };
   useEffect(() => {
-    data == 3 ? setPages(3) : setPages(5), loadInfos();
+    let abortController = new AbortController();
+    abortController.abort();
+    data == 3 ? setPages(3) : setPages(5);
+    loadInfos();
   }, [infos]);
 
   return (
-    <>
+    <div className="info">
       <Head>
         <title>Мэдээ</title>
         <link rel="icon" href="/img/logo.png" sizes="100x100" />
       </Head>
-      <Container component={Box} className="mt-6 ">
+      <Container component={Box} className="mt-6 info_container">
         <div className="grid section_grid gap-6">
           {infos.map((info) => {
             return (
@@ -130,6 +133,6 @@ export default function Infos({ data }) {
         </Container>
       </Container>
       <MainContact ismain={pages} />
-    </>
+    </div>
   );
 }

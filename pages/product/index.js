@@ -49,6 +49,20 @@ function Current_btn(props) {
     );
   }
 }
+function getWindowWidth() {
+  if (window !== "undefined") {
+    if (window.innerWidth <= 1024 && window.innerWidth > 768) {
+      return 3;
+    } else if (window.innerWidth <= 768) {
+      return 2;
+    } else {
+      return 5;
+    }
+  } else {
+    return 5;
+  }
+}
+
 export default function Product() {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
@@ -59,8 +73,10 @@ export default function Product() {
   const [pages, setPages] = useState(1);
   const [categoryTitle, setCategoryTitle] = useState("Бүлүүрийн сальник");
   const [materialId, setMaterialId] = useState();
-
+  const [per, setPer] = useState(3);
+  const [windowWidth, setWindowWidth] = useState();
   const router = useRouter();
+
   const loadProduct = async () => {
     try {
       const response = await axios.get(`http://localhost:3000/api/category`);
@@ -75,10 +91,11 @@ export default function Product() {
         url: `http://localhost:3000/api/product/${page}`,
         params: {
           per: pages,
+          perPage: per,
         },
       });
       setProducts(res.data.productData);
-      setCount(Math.ceil(res.data.productCount[0].counts / 5));
+      setCount(Math.ceil(res.data.productCount[0].counts / per));
     } catch (err) {
       console.log(err);
     }
@@ -95,18 +112,19 @@ export default function Product() {
   };
 
   const handlerSubmit = (id) => {
-    // console.log(id);
     setPage(id);
     setCategoryTitle(data[id - 1].type);
   };
   const handleProduct = (id) => {
     setProductId(id);
-    console.log(id);
   };
 
   useEffect(() => {
+    let abortController = new AbortController();
+    abortController.abort();
     loadProduct();
-  }, [product, products]);
+    setPer(getWindowWidth());
+  }, [products]);
   return (
     <>
       <Head>
@@ -114,7 +132,7 @@ export default function Product() {
         <link rel="icon" href="/img/logo.png" sizes="100x100" />
       </Head>
       <div className="bg-zinc-100 ">
-        <div className="flex justify-between px-32 bg-emerald-800">
+        <div className="flex justify-between px-32 bg-emerald-800 category">
           {data.map((d) => {
             return (
               <div
@@ -128,11 +146,11 @@ export default function Product() {
           })}
         </div>
         <Main ismain={false} product={product} materialId={materialId} />
-        <Container component={Box} className="py-12">
+        <Container component={Box} className="py-12 width">
           <div className="mb-12">
             <h2 className="text-2xl font-bold">{categoryTitle}</h2>
           </div>
-          <Grid container className="grid grid-cols-5 gap-5">
+          <Grid container className={`grid product_grid grid-cols-${per} gap-5`}>
             {products.map((p) => {
               return (
                 <div key={p.product_id}>

@@ -28,7 +28,7 @@ export default function Materials() {
           container
           spacing={2}
           justifyContent="center"
-          className="grid grid-cols-2 width mx-auto gap-10"
+          className="grid grid-cols-2 width mx-auto gap-10 material"
         >
           {data.map((d) => {
             return <Material data={d} key={d.material_id} />;
