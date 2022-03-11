@@ -20,10 +20,10 @@ export default function Materials() {
         <title>Материал</title>
         <link rel="icon" href="/img/logo.png" />
       </Head>
-      <div className="width mx-auto my-10 px-6">
+      <div className="width mx-auto my-10 px-6 material_main">
         <h2 className="text-2xl font-bold">Материал</h2>
       </div>
-      <Container component={Box} py={3} className="mt-8  ">
+      <Container component={Box} py={3} className="mt-8 material_detail">
         <Grid
           container
           spacing={2}

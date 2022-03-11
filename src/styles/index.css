@@ -298,15 +298,31 @@ img {
     .navbar_mobile .pl-2 {
         padding: 0;
     }
+    .header_content .mt-24 .text-3xl{
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    .header_content .w-2\/5 {
+        width: 50%;
+        margin-right: 1.5rem;
+    }
     .product_detail_main {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .product_detail_main .ml-10{
         margin: 0;
-        margin-top: 2rem;
+        margin-bottom: 2rem;
     }
     .product_detail_main .text-3xl {
         font-size: 1.5rem;
+    }
+    .product_detail_main .border {
+        margin: 0 auto;
+        width: 90%;
+    }
+    .product_detail_main .relative {
+        padding-bottom: 2.5rem;
     }
     .product_detail_add .text-xl{
         font-size: 1rem;
@@ -340,6 +356,14 @@ img {
     .address {
         padding-top: 0;
     }
+    .section_content {
+        margin-left: 1.5rem;
+    }
+    .section_img {
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
     
 }
 @media screen and (max-width: 500px) {
@@ -355,4 +379,28 @@ img {
     .product_detail_add tbody tr td {
         font-size: 0.6rem;
     }
+    .header_content .w-2\/5 {
+        margin-right: 1rem;
+    }
+    .material_detail {
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+    }
+    .material_detail .section_content {
+        margin: 0;
+        margin-top: 1rem;
+    }
+    .material {
+        padding: 0;
+        margin: 0;
+        max-width: 100% !important;
+    }
+    .material_main {
+        padding: 0;
+        margin-bottom: 0;
+    }
+    .material_detail {
+        margin-top: 0;
+    }
+
 }

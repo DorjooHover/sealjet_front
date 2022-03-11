@@ -116,7 +116,7 @@ export default function Infos({ data }) {
             container
             spacing={2}
             justifyContent="center"
-            className="grid grid-cols-3 gap-4"
+            className="grid grid-cols-3 gap-4 w-full mx-auto"
           >
             {infos.map((info) => {
               return <Main ismain={pages} info={info} key={info.info_id} />;

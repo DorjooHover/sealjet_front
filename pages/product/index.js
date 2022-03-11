@@ -25,14 +25,10 @@ function Main(props) {
   const product = props.product;
   const materialId = props.materialId;
 
-  if (isMain) {
+  if (product[0] == undefined) {
     return <></>;
   } else {
-    if (product[0] == undefined) {
-      return <></>;
-    } else {
-      return <ProductDetail product={product} materialId={materialId} />;
-    }
+    return <ProductDetail product={product} materialId={materialId} />;
   }
 }
 function Current_btn(props) {
@@ -63,7 +59,7 @@ function getWindowWidth() {
   }
 }
 
-export default function Product() {
+export default function Product({ismain}) {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [count, setCount] = useState(1);
@@ -145,12 +141,15 @@ export default function Product() {
             );
           })}
         </div>
-        <Main ismain={false} product={product} materialId={materialId} />
+        <Main ismain={ismain} product={product} materialId={materialId} />
         <Container component={Box} className="py-12 width">
           <div className="mb-12">
             <h2 className="text-2xl font-bold">{categoryTitle}</h2>
           </div>
-          <Grid container className={`grid product_grid grid-cols-${per} gap-5`}>
+          <Grid
+            container
+            className={`grid product_grid grid-cols-${per} gap-5`}
+          >
             {products.map((p) => {
               return (
                 <div key={p.product_id}>
@@ -159,7 +158,7 @@ export default function Product() {
                     onClick={() => handleProduct(p.product_id)}
                   >
                     <div>
-                      <img src="/img/product/product_1.png" alt="product" />
+                      <img src={p.img} alt="product" />
                     </div>
                     <p className="text-zinc-300 py-4 border-t rounded-md overflow-hidden bg-white border-solid">
                       {p.title}
@@ -179,7 +178,7 @@ export default function Product() {
           </Box>
         </Container>
       </div>
-      <MainContact ismain={false} />
+      <MainContact ismain={ismain} />
     </>
   );
 }

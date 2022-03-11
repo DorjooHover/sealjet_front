@@ -4,7 +4,7 @@ export default function Material(data) {
   const router = useRouter(1);
 
   return (
-    <div className="flex mb-12">
+    <div className="flex mb-12 material_detail">
       <div className="rounded-md overflow-hidden  px-2 section_img">
         <img src={data.data.img} alt="" />
       </div>

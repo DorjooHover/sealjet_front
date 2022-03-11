@@ -97,7 +97,7 @@ export default function Header() {
       <div className="flex">
         <SideBar />
         <div className="dashboard">
-          <h2 className="font-bold text-xl mb-3 ">Лого</h2>
+          <h2 className="font-bold text-xl mb-3 ">Нүүр</h2>
           {alert && (
             <Alert variant="outlined" severity="success" className="mb-3 w-96">
               Амжилттай

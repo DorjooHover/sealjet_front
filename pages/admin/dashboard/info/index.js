@@ -4,6 +4,10 @@ import { Container, Box, Grid, Pagination } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import Head from "next/head";
+function Date(props) {
+  let date = props.date.substr(0, 10);
+  return <p className="section_text text-base flex-1 text-right">{date}</p>;
+}
 export default function Info() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -149,14 +153,14 @@ export default function Info() {
                         key={info.info_id}
                         className="flex items-center my-3 justify-between"
                       >
-                        <div className="rounded-md overflow-hidden w-10 h-10">
-                          <img src={"img/" + info.img} />
+                        <div className="rounded-md overflow-hidden w-16 h-auto flex items-center">
+                          <img src={info.img} />
                         </div>
                         <div className="ml-6">
                           <h4 className="font-semibold text-xl">
                             {info.title}
                           </h4>
-                          <p>{info.date}</p>
+                          <Date date={info.date} />
                         </div>
                         <button className="bg rounded-md ml-8 ">
                           <Edit className="text-white text-xs w-5 h-5 m-2" />

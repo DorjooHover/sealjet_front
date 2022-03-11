@@ -144,7 +144,7 @@ function Order(props) {
   } else {
     return (
       <div className="pt-12 width m-auto px-20" key={product[0].product_id}>
-        <div className="flex mb-10">
+        <div className="flex mb-10 product_detail_main">
           <div className="rounded-lg overflow-hidden bg-white border-zinc-300 border-solid border ">
             {/* <Image
               src="/img/product/product_1.png"
@@ -161,7 +161,7 @@ function Order(props) {
           </div>
         </div>
 
-        <table className="w-full">
+        <table className="w-full product_detail_add">
           <thead>
             <tr>
               <td className="uppercase table_text text-xl font-semibold">
