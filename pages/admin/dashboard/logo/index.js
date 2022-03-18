@@ -148,11 +148,7 @@ export default function Logos() {
                 />
               </form>
             </div>
-            <Container
-              component={Box}
-              py={3}
-              className="mt-10 px-0 flex flex-col items-center"
-            >
+            <div className="mt-10 px-0 flex flex-col items-center">
               <div className="w-96">
                 {data.map((d) => {
                   return (
@@ -162,7 +158,7 @@ export default function Logos() {
                     >
                       <div className="flex">
                         <div className="rounded-md overflow-hidden w-10 h-10">
-                          <img src={d.img} />
+                          <img src={d.img} alt="logo" />
                         </div>
                         <div className="ml-6">
                           <h4 className="font-semibold text-xl">{d.name}</h4>
@@ -189,7 +185,7 @@ export default function Logos() {
                   onChange={(event, value) => setPage(value)}
                 />
               </Box>
-            </Container>
+            </div>
           </div>
         </div>
       </div>

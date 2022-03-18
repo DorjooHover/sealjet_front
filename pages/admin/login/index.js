@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import axios from "axios";
-
 export default function Admin() {
   const [admin, setAdmin] = useState([]);
   const [message, setMessage] = useState();

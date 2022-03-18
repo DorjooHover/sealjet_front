@@ -59,7 +59,7 @@ function getWindowWidth() {
   }
 }
 
-export default function Product({ismain}) {
+export default function Product({ ismain }) {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [count, setCount] = useState(1);
@@ -146,10 +146,7 @@ export default function Product({ismain}) {
           <div className="mb-12">
             <h2 className="text-2xl font-bold">{categoryTitle}</h2>
           </div>
-          <Grid
-            container
-            className={`grid product_grid grid-cols-${per} gap-5`}
-          >
+          <div className={`grid product_grid grid-cols-${per} gap-5`}>
             {products.map((p) => {
               return (
                 <div key={p.product_id}>
@@ -167,7 +164,7 @@ export default function Product({ismain}) {
                 </div>
               );
             })}
-          </Grid>
+          </div>
           <Box className="flex justify-center mt-12">
             <Pagination
               count={count}

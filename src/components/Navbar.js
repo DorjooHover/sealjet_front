@@ -28,7 +28,6 @@ export default function Navbar() {
   };
   const backHamburger = (e) => {
     e.preventDefault();
-    console.log(e.target.href);
     if (e.target.href !== undefined) {
       router.push(e.target.href);
       setHam(false);
@@ -38,13 +37,8 @@ export default function Navbar() {
   };
   return (
     <Box className="nav">
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        className="py-4 px-32 flex navbar navbar_desktop"
-      >
-        <Stack sx={{ flex: 4, display: "flex" }} className="flex-row relative ">
+      <div className="py-4 px-32 flex navbar navbar_desktop justify-between items-center">
+        <div className="flex-row relative flex">
           <Link href="/">
             <a className="mr-7 relative h-14 w-24 flex items-center">
               <img src="/img/sealjet-logo.png" alt="sealjet_logo" />
@@ -84,7 +78,7 @@ export default function Navbar() {
               Захиалах
             </a>
           </Link> */}
-        </Stack>
+        </div>
 
         <Paper
           component="form"
@@ -106,16 +100,11 @@ export default function Navbar() {
             inputProps={{ "aria-label": "searchh product" }}
           />
         </Paper>
-      </Stack>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        className="py-4 px-32 flex navbar navbar_mobile"
-      >
-        <div className="flex-1 justify-start flex" onClick={handleHamburger}>
-          <IconButton className=" text-white hamburger">
-            <Menu />
+      </div>
+      <div className="py-4 px-32 flex navbar justify-between items-center navbar_mobile">
+        <div className="justify-start flex" onClick={handleHamburger}>
+          <IconButton className="text-white hamburger">
+            <Menu className="text-white" />
           </IconButton>
         </div>
         {ham && (
@@ -163,14 +152,14 @@ export default function Navbar() {
                 </a>
               </Link>
               <span className="absolute right-2 top-2 ">
-                <IconButton onClick={backHamburger} className="text-white">
-                  <Clear />
+                <IconButton onClick={backHamburger}>
+                  <Clear className="text-white" />
                 </IconButton>
               </span>
             </div>
           </div>
         )}
-        <Link href="/" className="flex-1">
+        <Link href="/">
           <a className="mr-7 relative h-14 w-24 flex items-center ">
             <img src="/img/sealjet-logo.png" alt="sealjet_logo" />
           </a>
@@ -184,9 +173,9 @@ export default function Navbar() {
         <IconButton
           type="submit"
           aria-label="search"
-          className="p-0 pl-2 flex-1 text-white flex justify-end"
+          className="p-0 pl-2 flex justify-end"
         >
-          <Search />
+          <Search className="text-white" />
         </IconButton>
         {/* <Paper
           component="form"
@@ -208,7 +197,7 @@ export default function Navbar() {
             inputProps={{ "aria-label": "searchh product" }}
           />
         </Paper> */}
-      </Stack>
+      </div>
     </Box>
   );
 }

@@ -19,14 +19,14 @@ export default function Header({ data }) {
       </div>
       <div className="px-10 py-10 mt-10">{/* <Logo /> */}</div>
       <div className="flex absolute right-0 top-1/2 social flex-col rounded-md social">
-        <Link href="/" className="px-2 py-5 text-white">
-          <Facebook className="w-7 h-7" />
+        <Link href="/" className="px-2 py-5 ">
+          <Facebook className="w-7 h-7 text-white" />
         </Link>
-        <Link href="/" className="px-2 py-5 text-white">
-          <Instagram className="w-7 h-7" />
+        <Link href="/" className="px-2 py-5 ">
+          <Instagram className="w-7 h-7 text-white" />
         </Link>
-        <Link href="/" className="px-2 py-5 text-white">
-          <YouTubeIcon className="w-7 h-7" />
+        <Link href="/" className="px-2 py-5 ">
+          <YouTubeIcon className="w-7 h-7 text-white" />
         </Link>
       </div>
     </div>

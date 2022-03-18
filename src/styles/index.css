@@ -157,7 +157,9 @@ img {
 .bg-zinc-100 {
     padding-bottom: 1rem;
 }
-
+.search {
+    max-width: 400px;
+}
 @media screen and (min-width:1024px ) {
     .product_grid {
         grid-template-columns: repeat(5, 1fr)

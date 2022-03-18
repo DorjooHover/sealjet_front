@@ -112,16 +112,11 @@ export default function Infos({ data }) {
           })}
         </div>
         <Container component={Box} py={3} className="mt-8 px-0">
-          <Grid
-            container
-            spacing={2}
-            justifyContent="center"
-            className="grid grid-cols-3 gap-4 w-full mx-auto"
-          >
+          <div className="grid grid-cols-3 gap-4 w-full mx-auto">
             {infos.map((info) => {
               return <Main ismain={pages} info={info} key={info.info_id} />;
             })}
-          </Grid>
+          </div>
           <Box py={3} display="flex" justifyContent="center">
             <Pagination
               count={perPage}
