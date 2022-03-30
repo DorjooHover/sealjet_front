@@ -30,7 +30,7 @@ export default function Product() {
     reader.readAsDataURL(changeEvent.target.files[0]);
   }
   const loadCategory = async () => {
-    let res = await axios.get(`http://localhost:3000/api/category`, []);
+    let res = await axios.get(`/api/category`, []);
     setCategories(res.data);
   };
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function Product() {
       }
     ).then((r) => r.json());
     setImage(data.secure_url);
-    let res = await axios.post(`http://localhost:3000/api/product`, {
+    let res = await axios.post(`/api/product`, {
       params: {
         image,
         title,
@@ -73,7 +73,7 @@ export default function Product() {
 
   const handleProductDetail = async (e) => {
     e.preventDefault();
-    let res = await axios.post(`http://localhost:3000/api/product_detail`, {
+    let res = await axios.post(`/api/product_detail`, {
       params: {
         productId: productId,
         temperature: productDetail.temperature,
@@ -137,7 +137,10 @@ export default function Product() {
                   >
                     {categories.map((category) => {
                       return (
-                        <option id={category.category_id} key={category.category_id}>
+                        <option
+                          id={category.category_id}
+                          key={category.category_id}
+                        >
                           {category.type}
                         </option>
                       );

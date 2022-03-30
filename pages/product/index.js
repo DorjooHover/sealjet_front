@@ -75,7 +75,7 @@ export default function Product({ ismain }) {
 
   const loadProduct = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/category`);
+      const response = await axios.get(`/api/category`);
       setData(response.data);
     } catch (err) {
       console.log(err);
@@ -84,7 +84,7 @@ export default function Product({ ismain }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://localhost:3000/api/product/${page}`,
+        url: `/api/product/${page}`,
         params: {
           per: pages,
           perPage: per,
@@ -98,7 +98,7 @@ export default function Product({ ismain }) {
     try {
       const product = await axios({
         method: "get",
-        url: `http://localhost:3000/api/product_detail/${productId}`,
+        url: `/api/product_detail/${productId}`,
       });
       setProduct(product.data);
     } catch (err) {

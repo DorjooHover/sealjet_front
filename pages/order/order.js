@@ -46,7 +46,7 @@ export default function Orders() {
       }
     ).then((r) => r.json());
     setImage(data.secure_url);
-    let res = await axios.post(`http://localhost:3000/api/order`, {
+    let res = await axios.post(`/api/order`, {
       params: {
         name,
         phone,
@@ -156,7 +156,7 @@ export default function Orders() {
               />
               см
             </div>
-            <div className='m_b'>
+            <div className="m_b">
               <label htmlFor="dotor_d" className="mr-4">
                 Дотор диаметр
               </label>
@@ -170,7 +170,7 @@ export default function Orders() {
               />
               см
             </div>
-            <div className='m_b'>
+            <div className="m_b">
               <label htmlFor="height" className="mr-4">
                 Өндөр
               </label>
