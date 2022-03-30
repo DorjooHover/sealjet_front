@@ -10,7 +10,6 @@ const getAllCategories = async (req, res) => {
 
 const getCategoryById = async (req, res) => {
   let id = req.query.id;
-  console.log(id);
   try {
     let headerData = await executeQuery(
       `select * from headers where header_id=${id}`,
