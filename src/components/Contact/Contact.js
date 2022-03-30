@@ -2,7 +2,7 @@ import Maps from "./Maps";
 export default function Contact() {
   return (
     <div className="contact relative">
-      <div className="flex py-16 contact_container">
+      <div className="flex py-16 contact_container justify-between">
         <div className="px-28 py-14 address">
           <h2 className="text-3xl text-white font-semibold mb-4">
             Хаяг байршил:
