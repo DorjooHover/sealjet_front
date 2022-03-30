@@ -75,7 +75,7 @@ export default function Product({ ismain }) {
 
   const loadProduct = async () => {
     try {
-      const response = await axios.get("/api/category");
+      const response = await axios.get("../api/category");
       setData(response.data);
     } catch (err) {
       console.log(err);
