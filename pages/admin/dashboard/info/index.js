@@ -154,7 +154,7 @@ export default function Info() {
                         className="flex items-center my-3 justify-between"
                       >
                         <div className="rounded-md overflow-hidden w-16 h-auto flex items-center">
-                          <img src={info.img} />
+                          <img src={info.img} alt="info" />
                         </div>
                         <div className="ml-6">
                           <h4 className="font-semibold text-xl">
