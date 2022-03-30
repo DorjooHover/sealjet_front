@@ -80,7 +80,7 @@ export default function Navbar() {
           </Link> */}
         </div>
 
-        <Paper
+        {/* <Paper
           component="form"
           sx={{
             p: "2px 4px",
@@ -99,7 +99,7 @@ export default function Navbar() {
             placeholder="Бүтээгдэхүүн хайх"
             inputProps={{ "aria-label": "searchh product" }}
           />
-        </Paper>
+        </Paper> */}
       </div>
       <div className="py-4 px-32 flex navbar justify-between items-center navbar_mobile">
         <div className="justify-start flex" onClick={handleHamburger}>
@@ -170,13 +170,13 @@ export default function Navbar() {
               Захиалах
             </a>
           </Link> */}
-        <IconButton
+        {/* <IconButton
           type="submit"
           aria-label="search"
           className="p-0 pl-2 flex justify-end"
         >
           <Search className="text-white" />
-        </IconButton>
+        </IconButton> */}
         {/* <Paper
           component="form"
           sx={{
