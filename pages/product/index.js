@@ -74,36 +74,25 @@ export default function Product({ ismain }) {
   const router = useRouter();
 
   const loadProduct = async () => {
-    try {
-      const response = await axios.get("../api/category");
-      setData(response.data);
-    } catch (err) {
-      console.log(err);
-    }
+    const response = await axios.get("/api/category");
+    setData(response.data);
 
-    try {
-      const res = await axios({
-        method: "get",
-        url: `/api/product/${page}`,
-        params: {
-          per: pages,
-          perPage: per,
-        },
-      });
-      setProducts(res.data.productData);
-      setCount(Math.ceil(res.data.productCount[0].counts / per));
-    } catch (err) {
-      console.log(err);
-    }
-    try {
-      const product = await axios({
-        method: "get",
-        url: `/api/product_detail/${productId}`,
-      });
-      setProduct(product.data);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await axios({
+      method: "get",
+      url: `/api/product/${page}`,
+      params: {
+        per: pages,
+        perPage: per,
+      },
+    });
+    setProducts(res.data.productData);
+    setCount(Math.ceil(res.data.productCount[0].counts / per));
+
+    const product = await axios({
+      method: "get",
+      url: `/api/product_detail/${productId}`,
+    });
+    setProduct(product.data);
     setMaterialId(router.query.material_id);
   };
 
