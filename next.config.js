@@ -9,5 +9,4 @@ module.exports = {
     ignoreDuringBuilds: true,
   },
   staticPageGenerationTimeout: 1000,
-  basePath: "https://sealjet-front.vercel.app/",
 };
