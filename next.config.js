@@ -1,4 +1,3 @@
-const securityHeaders = []
 module.exports = {
   reactStrictMode: true,
   images: {
@@ -10,13 +9,5 @@ module.exports = {
     ignoreDuringBuilds: true,
   },
   staticPageGenerationTimeout: 1000,
-  async headers() {
-    return [
-      {
-        // Apply these headers to all routes in your application.
-        source: '/:path*',
-        headers: securityHeaders,
-      },
-    ]
-  }
+  basePath: "https://sealjet-front.vercel.app/",
 };

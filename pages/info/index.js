@@ -76,7 +76,7 @@ export default function Infos({ data }) {
   const loadInfos = async () => {
     const res = await axios({
       method: "get",
-      url: `/api/info/${page}`,
+      url: `api/info/${page}`,
       params: {
         per: pages,
       },
