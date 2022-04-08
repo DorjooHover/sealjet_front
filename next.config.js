@@ -8,6 +8,9 @@ module.exports = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  publicRuntimeConfig: {
+    NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
+  },
   staticPageGenerationTimeout: 1000,
   useFileSystemPublicRoutes: false,
 };

@@ -7,12 +7,16 @@ import Contact from "../src/components/Contact/Contact";
 import Footer from "../src/components/Contact/Footer";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import getConfig from "next/config";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [logo, setLogo] = useState([]);
+  const { publicRuntimeConfig } = getConfig();
   const loadData = async () => {
-    const res = await axios.get("/api/header");
+    const res = await axios.get(
+      `${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/header`
+    );
     setData(res.data[0]);
     const logos = await axios.get("/api/logo");
     setLogo(logos.data);
