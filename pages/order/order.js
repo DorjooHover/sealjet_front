@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import axios from "axios";
 import Head from "next/head";
+import getConfig from "next/config";
 export default function Orders() {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -14,6 +15,7 @@ export default function Orders() {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
   const [image, setImage] = useState();
+  const {publicRuntimeConfig} = getConfig()
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
     reader.onload = function (onLoadEvent) {
@@ -46,7 +48,7 @@ export default function Orders() {
       }
     ).then((r) => r.json());
     setImage(data.secure_url);
-    let res = await axios.post(`/api/order`, {
+    let res = await axios.post(`${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/order`, {
       params: {
         name,
         phone,

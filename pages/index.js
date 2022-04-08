@@ -18,7 +18,7 @@ export default function Home() {
       `${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/header`
     );
     setData(res.data[0]);
-    const logos = await axios.get("/api/logo");
+    const logos = await axios.get(`${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/logo`);
     setLogo(logos.data);
   };
   useEffect(() => {
