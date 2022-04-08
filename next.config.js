@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ["cloudinary.com"],
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -9,4 +9,5 @@ module.exports = {
     ignoreDuringBuilds: true,
   },
   staticPageGenerationTimeout: 1000,
+  useFileSystemPublicRoutes: false,
 };
