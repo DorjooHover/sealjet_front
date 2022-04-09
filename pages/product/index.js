@@ -75,6 +75,7 @@ export default function Product({ ismain }) {
   const router = useRouter();
   // const {process.env} = getConfig()
   const loadProduct = async () => {
+    console.log(process.env.NEXT_PUBLIC_URL)
     const response = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/category"`);
     setData(response.data);
 

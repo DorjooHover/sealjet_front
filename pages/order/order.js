@@ -48,7 +48,7 @@ export default function Orders() {
       }
     ).then((r) => r.json());
     setImage(data.secure_url);
-    let res = await axios.post(`${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/order`, {
+    let res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/order`, {
       params: {
         name,
         phone,

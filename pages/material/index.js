@@ -8,9 +8,10 @@ import Footer from "../../src/components/Contact/Footer";
 import getConfig from "next/config";
 export default function Materials() {
   const [data, setData] = useState([]);
-  const {publicRuntimeConfig} = getConfig()
+  // const {publicRuntimeConfig} = getConfig()
   const loadData = async () => {
-    const res = await axios.get(`${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/material`);
+    console.log(process.env.NEXT_PUBLIC_URL)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/material`);
     setData(res.data);
   };
   useEffect(() => {

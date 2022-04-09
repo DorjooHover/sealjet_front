@@ -76,9 +76,10 @@ export default function Infos({ data }) {
   const [infos, setInfos] = useState([]);
   const {publicRuntimeConfig} = getConfig()
   const loadInfos = async () => {
+    console.log(process.env.NEXT_PUBLIC_URL)
     const res = await axios({
       method: "get",
-      url: `${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/info/${page}`,
+      url: `${process.env.NEXT_PUBLIC_URL}/api/info/${page}`,
       params: {
         per: pages,
       },
