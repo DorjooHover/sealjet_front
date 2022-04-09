@@ -12,13 +12,13 @@ import getConfig from "next/config";
 export default function Home() {
   const [data, setData] = useState([]);
   const [logo, setLogo] = useState([]);
-  const { publicRuntimeConfig } = getConfig();
+  // const { publicRuntimeConfig } = getConfig();
   const loadData = async () => {
     const res = await axios.get(
-      `${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/header`
+      `${process.env.NEXT_PUBLIC_URL}/api/header`
     );
     setData(res.data[0]);
-    const logos = await axios.get(`${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/logo`);
+    const logos = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/logo`);
     setLogo(logos.data);
   };
   useEffect(() => {

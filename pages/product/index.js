@@ -73,14 +73,14 @@ export default function Product({ ismain }) {
   const [per, setPer] = useState(3);
   const [windowWidth, setWindowWidth] = useState();
   const router = useRouter();
-  const {publicRuntimeConfig} = getConfig()
+  // const {process.env} = getConfig()
   const loadProduct = async () => {
-    const response = await axios.get(`${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/category"`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/category"`);
     setData(response.data);
 
     const res = await axios({
       method: "get",
-      url: `${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/product/${page}`,
+      url: `${process.env.NEXT_PUBLIC_URL}/api/product/${page}`,
       params: {
         per: pages,
         perPage: per,
@@ -91,7 +91,7 @@ export default function Product({ ismain }) {
 
     const product = await axios({
       method: "get",
-      url: `${publicRuntimeConfig.NEXT_PUBLIC_URL}/api/product_detail/${productId}`,
+      url: `${process.env.NEXT_PUBLIC_URL}/api/product_detail/${productId}`,
     });
     setProduct(product.data);
     setMaterialId(router.query.material_id);
