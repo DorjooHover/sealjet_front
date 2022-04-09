@@ -46,7 +46,7 @@ export default function Orders() {
       }
     ).then((r) => r.json());
     setImage(data.secure_url);
-    let res = await axios.post(`http://localhost:3000/api/order`, {
+    let res = await axios.post(`/api/order`, {
       params: {
         name,
         phone,

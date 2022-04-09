@@ -8,7 +8,7 @@ import Footer from "../../src/components/Contact/Footer";
 export default function Materials() {
   const [data, setData] = useState([]);
   const loadData = async () => {
-    const res = await axios.get("http://localhost:3000/api/material");
+    const res = await axios.get("/api/material");
     setData(res.data);
   };
   useEffect(() => {

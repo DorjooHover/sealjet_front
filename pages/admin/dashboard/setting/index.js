@@ -10,7 +10,7 @@ export default function Setting() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const loadPassword = async () => {
-    let res = axios.get("http://localhost:3000/api/admin");
+    let res = axios.get("/api/admin");
     // setPassword(res.data[0].password)
     console.log(res);
   };
@@ -21,7 +21,7 @@ export default function Setting() {
       if (oldPassword == authPassword) {
         let res = axios({
           method: "put",
-          url: `http://localhost:3000/api/admin/1`,
+          url: `/api/admin/1`,
           params: {
             name: name,
             password: newPassword,
