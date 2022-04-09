@@ -5,22 +5,18 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Contact from "../../src/components/Contact/Contact";
 import Footer from "../../src/components/Contact/Footer";
-import getConfig from "next/config";
-export default function Materials({ data }) {
-  // const [data, setData] = useState([]);
-  // const {publicRuntimeConfig} = getConfig()
-  // const loadData = async () => {
-  //   console.log(process.env.NEXT_PUBLIC_URL);
-  //   const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/material`);
-  //   setData(res.data);
-  // };
-  // useEffect(() => {
-  //   loadData();
-  // }, []);
-  // console.log(data);
+export default function Materials() {
+  const [data, setData] = useState([]);
+  const loadData = async () => {
+    const res = await axios.get("/api/material");
+    setData(res.data);
+  };
+  useEffect(() => {
+    loadData();
+  }, []);
   return (
     <div>
-      {/* <Head>
+      <Head>
         <title>Материал</title>
         <link rel="icon" href="/img/logo.png" />
       </Head>
@@ -40,14 +36,7 @@ export default function Materials({ data }) {
         </Grid>
       </Container>
       <Contact />
-      <Footer /> */}
+      <Footer />
     </div>
   );
-}
-export async function getServerSideProps() {
-  // Fetch data from external API
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/material`);
-  // const data = await res.json();
-  // // Pass data to the page via props
-  // return { props: { data } };
 }
