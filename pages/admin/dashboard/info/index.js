@@ -48,7 +48,7 @@ export default function Info() {
     ).then((r) => r.json());
     console.log(image);
     setImage(data.secure_url);
-    let res = await axios.post(`/api/info`, {
+    let res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/info`, {
       params: {
         title,
         description,
@@ -65,12 +65,12 @@ export default function Info() {
   const handleDelete = async (e) => {
     e.preventDefault();
     let id = e.target.id;
-    let res = await axios.delete(`/api/info/${id}`);
+    let res = await axios.delete(`${process.env.NEXT_PUBLIC_URL}/api/info/${id}`);
   };
   const loadInfos = async () => {
     let info = await axios({
       method: "get",
-      url: `/api/info/${page}`,
+      url: `${process.env.NEXT_PUBLIC_URL}/api/info/${page}`,
 
       params: {
         per: pages,

@@ -22,7 +22,7 @@ export default function Logos() {
   const [perPage, setPerPage] = useState(1);
   const loadLogo = async () => {
     try {
-      let res = await axios.get(`/api/logo/${page}`, []);
+      let res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/logo/${page}`, []);
       setData(res.data.logoData);
       setPerPage(Math.ceil(res.data.counts / 6));
     } catch (err) {
@@ -61,7 +61,7 @@ export default function Logos() {
       }
     ).then((r) => r.json());
     setImage(data.secure_url);
-    let res = await axios.post(`/api/logo`, {
+    let res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/logo`, {
       params: {
         image: image,
         name: logos.name,
@@ -75,7 +75,7 @@ export default function Logos() {
   };
   const handleDelete = async (e) => {
     try {
-      let res = await axios.delete(`/api/logo/${e.target.id}`);
+      let res = await axios.delete(`${process.env.NEXT_PUBLIC_URL}/api/logo/${e.target.id}`);
     } catch (err) {
       console.log(err);
     }

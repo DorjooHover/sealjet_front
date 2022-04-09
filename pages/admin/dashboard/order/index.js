@@ -12,7 +12,7 @@ export default function Order() {
   const [orderDetail, setOrderDetail] = useState([]);
   const [detail, setDetail] = useState(false);
   const loadOrder = async () => {
-    let res = await axios.get(`/api/order`, []);
+    let res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/order`, []);
     setOrders(res.data);
   };
   useEffect(() => {
@@ -22,13 +22,19 @@ export default function Order() {
     e.preventDefault();
     let id = e.target.id;
     console.log(e.target);
-    let res = await axios.delete(`/api/order/${id}`, []);
+    let res = await axios.delete(
+      `${process.env.NEXT_PUBLIC_URL}/api/order/${id}`,
+      []
+    );
   };
   const moreDetail = async (e) => {
     e.preventDefault();
     let id = e.target.id;
     console.log(id);
-    let res1 = await axios.get(`/api/order/${id}`, []);
+    let res1 = await axios.get(
+      `${process.env.NEXT_PUBLIC_URL}/api/order/${id}`,
+      []
+    );
     setOrderDetail(res1.data);
     setDetail(true);
   };

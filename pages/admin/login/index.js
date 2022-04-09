@@ -8,7 +8,7 @@ export default function Admin() {
   const loadAdmin = async () => {
     const res = await axios({
       method: "get",
-      url: "/api/admin",
+      url: `${process.env.NEXT_PUBLIC_URL}/api/admin`,
     });
     setAdmin(res.data);
   };

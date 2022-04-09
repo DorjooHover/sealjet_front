@@ -74,7 +74,7 @@ export default function Header() {
     ).then((r) => r.json());
     setBgImg(bgdata.secure_url);
 
-    let res = await axios.put(`/api/header`, {
+    let res = await axios.put(`${process.env.NEXT_PUBLIC_URL}/api/header`, {
       params: {
         image: image,
         bgImg: bgImg,

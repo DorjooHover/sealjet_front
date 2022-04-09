@@ -37,7 +37,7 @@ export default function Material() {
       }
     ).then((r) => r.json());
     setImage(data.secure_url);
-    let res = await axios.post(`/api/material`, {
+    let res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/material`, {
       params: {
         image,
         name,
