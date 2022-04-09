@@ -14,11 +14,9 @@ export default function Home() {
   const [logo, setLogo] = useState([]);
   // const { publicRuntimeConfig } = getConfig();
   const loadData = async () => {
-    const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_URL}/api/header`
-    );
+    const res = await axios.get(`/api/header`);
     setData(res.data[0]);
-    const logos = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/logo`);
+    const logos = await axios.get(`/api/logo`);
     setLogo(logos.data);
   };
   useEffect(() => {
