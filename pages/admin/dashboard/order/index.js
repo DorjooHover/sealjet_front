@@ -61,7 +61,7 @@ export default function Order() {
                 <td></td>
                 <td></td>
               </tr>
-              {orders.map((order) => {
+              {orders && orders.map((order) => {
                 return (
                   <>
                     <tr key={order.order_id}>
