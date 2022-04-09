@@ -98,7 +98,7 @@ export default function Product({ ismain }) {
     try {
       const product = await axios({
         method: "get",
-        url: `http://localhost:3000/api/product_detail/${productId}`,
+        url: `/api/product_detail/${productId}`,
       });
       setProduct(product.data);
     } catch (err) {
