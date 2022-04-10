@@ -19,7 +19,7 @@ export default function Logo({logo}) {
       {logo.map(l => {
         return (
           <>
-          <SplideSlide>
+          <SplideSlide className="flex items-center">
         <div className="rounded-xl overflow-hidden flex justify-center w-24">
           <img src={l.img} alt="logo" />
         </div>
