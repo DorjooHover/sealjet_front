@@ -33,7 +33,7 @@ export default function Home() {
         />
       </Head>
       <div>
-        <Header data={data} />
+        <Header data={data} logo={logo}/>
         <Product ismain={true} />
         <div className="bg-zinc-100 pt-12">
           <h2 className="title text-2xl font-bold mx-auto px-4">
