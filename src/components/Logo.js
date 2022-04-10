@@ -16,11 +16,17 @@ export default function Logo({logo}) {
         },
       }}
     >
-      <SplideSlide>
+      {logo.map(l => {
+        return (
+          <>
+          <SplideSlide>
         <div className="rounded-xl overflow-hidden flex justify-center w-24">
-          <img src={logo.img} alt="logo" />
+          <img src={l.img} alt="logo" />
         </div>
       </SplideSlide>
+      </>
+        )
+      })}
     </Splide>
   );
 }
