@@ -3,7 +3,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 // import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
-export default function Logo({logo}) {
+export default function Logo({ logo }) {
   return (
     <Splide
       options={{
@@ -16,16 +16,16 @@ export default function Logo({logo}) {
         },
       }}
     >
-      {logo.map(l => {
+      {logo.map((l) => {
         return (
           <>
-          <SplideSlide>
-        <div className="rounded-xl overflow-hidden flex justify-center w-24">
-          <img src={l.img} alt="logo" />
-        </div>
-      </SplideSlide>
-      </>
-        )
+            <SplideSlide className="flex items-center">
+              <div className="rounded-xl overflow-hidden flex justify-center w-24">
+                <img src={l.img} alt="logo" />
+              </div>
+            </SplideSlide>
+          </>
+        );
       })}
     </Splide>
   );

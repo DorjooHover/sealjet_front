@@ -20,6 +20,7 @@ export default function Product() {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
   const [image, setImage] = useState();
+  const [message, setMessage] = useState('')
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
     reader.onload = function (onLoadEvent) {
@@ -57,23 +58,25 @@ export default function Product() {
       }
     ).then((r) => r.json());
     setImage(data.secure_url);
-    let res = await axios.post(`/api/product`, {
-      params: {
-        image,
-        title,
-        description,
-        categoryId,
-      },
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    setProductId(res.data.result.insertId);
+    setTimeout(async () => {
+      let res = await axios.post(`/api/product`, {
+        params: {
+          image,
+          title,
+          description,
+          categoryId,
+        },
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      setProductId(res.data.result.insertId);
+    }, 4000);
   };
 
   const handleProductDetail = async (e) => {
     e.preventDefault();
-    let res = await axios.post(`/api/product_detail`, {
+    let res = productId ? await axios.post(`/api/product_detail`, {
       params: {
         productId: productId,
         temperature: productDetail.temperature,
@@ -85,7 +88,7 @@ export default function Product() {
         erchimjuulegch: productDetail.erchimjuulegch,
         zahiin_tulah: productDetail.zahiin_tulah,
       },
-    });
+    }) : null
     setProductDetail((productDetail) => ({
       ...productDetail,
       ...{
