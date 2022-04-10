@@ -30,7 +30,10 @@ export default function Product() {
     reader.readAsDataURL(changeEvent.target.files[0]);
   }
   const loadCategory = async () => {
-    let res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/category`, []);
+    let res = await axios.get(
+      `${process.env.NEXT_PUBLIC_URL}/api/category`,
+      []
+    );
     setCategories(res.data);
   };
   useEffect(() => {
@@ -73,19 +76,22 @@ export default function Product() {
 
   const handleProductDetail = async (e) => {
     e.preventDefault();
-    let res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/product_detail`, {
-      params: {
-        productId: productId,
-        temperature: productDetail.temperature,
-        speed: productDetail.speed,
-        pressure: productDetail.pressure,
-        undsen_salinik: productDetail.undsen_salinik,
-        tulah_tsagirag: productDetail.tulah_tsagirag,
-        gogtsoo_rezin: productDetail.gogtsoo_rezin,
-        erchimjuulegch: productDetail.erchimjuulegch,
-        zahiin_tulah: productDetail.zahiin_tulah,
-      },
-    });
+    let res = await axios.post(
+      `${process.env.NEXT_PUBLIC_URL}/api/product_detail`,
+      {
+        params: {
+          productId: productId,
+          temperature: productDetail.temperature,
+          speed: productDetail.speed,
+          pressure: productDetail.pressure,
+          undsen_salinik: productDetail.undsen_salinik,
+          tulah_tsagirag: productDetail.tulah_tsagirag,
+          gogtsoo_rezin: productDetail.gogtsoo_rezin,
+          erchimjuulegch: productDetail.erchimjuulegch,
+          zahiin_tulah: productDetail.zahiin_tulah,
+        },
+      }
+    );
     setProductDetail((productDetail) => ({
       ...productDetail,
       ...{
