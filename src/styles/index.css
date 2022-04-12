@@ -180,6 +180,9 @@ img {
     .navbar .flex-row {
         flex: 3;
     }
+    .header .w-3\/4 {
+        width: 80%;
+    }
     .search svg {
         width: 1.5rem;
     }
@@ -262,6 +265,7 @@ img {
         display: flex;
         align-items: center;
         padding: 3rem 0;
+        flex-direction: column;
     }
     .category {
         width: 100%;
@@ -306,7 +310,7 @@ img {
         font-weight: 700;
     }
     .header_content .w-2\/5 {
-        width: 50%;
+        width: 100%;
         margin-right: 1.5rem;
     }
     .product_detail_main {
@@ -383,6 +387,7 @@ img {
     }
     .header_content .w-2\/5 {
         margin-right: 1rem;
+        flex-direction: column-reverse;
     }
     .material_detail {
         flex-direction: column;

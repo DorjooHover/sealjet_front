@@ -7,7 +7,7 @@ export default function Header({ data, logo }) {
     <div className="header relative" key={data.header_id}>
       <span className="opacity-50 z-0 absolute inset-0 h-full w-full bg-black"></span>
       <div className="w-4/5 mx-auto relative header_content z-20 flex flex-nowrap py-12">
-        <div className="w-2/5 mr-8">
+        <div className="w-3/5 mr-8 flex items-center">
           <img src={data.logo} alt="product" />
         </div>
         <div className="mt-24">
