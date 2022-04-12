@@ -11,6 +11,17 @@ export default function Logo({ logo }) {
         type: "loop",
         gap: "2rem",
         perPage: 7,
+        breakpoints: {
+          1280: {
+            perPage: 6,
+          },
+          768: {
+            perPage: 5,
+          },
+          500: {
+            perPage: 3,
+          },
+        },
         autoScroll: {
           speed: 2,
         },
