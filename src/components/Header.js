@@ -17,7 +17,7 @@ export default function Header({ data, logo }) {
           </p>
         </div>
       </div>
-      <div className="px-10 py-10 mt-10"><Logo logo={logo}/></div>
+      <div className="px-10 py-10 mt-10 logo"><Logo logo={logo}/></div>
       <div className="flex absolute right-0 top-1/2 social flex-col rounded-md social">
         <Link href="/" className="px-2 py-5 ">
           <Facebook className="w-7 h-7 text-white" />
