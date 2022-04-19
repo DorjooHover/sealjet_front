@@ -31,6 +31,9 @@ img {
 .btn {
     background-color: #0E9151;
 }
+.logo {
+    width: 100%;
+}
 .dashboard {
     flex: 6;
     background: #e5e5e5;
@@ -303,6 +306,9 @@ img {
     }
     .navbar_mobile .pl-2 {
         padding: 0;
+    }
+    .header_content {
+        flex-direction: column-reverse;
     }
     .header_content .mt-24 .text-3xl{
         margin: 0;
